@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explore the Elite Dental Force platform architecture - combining AI Consultants and EDiFi software for comprehensive dental revenue intelligence.">
+  <title>Platform Overview - Elite Dental Force</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="icon" type="image/png" href="../images/favicon.png">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <div class="header-inner">
+        <a href="../index.html" class="logo">
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="40" height="40" rx="8" fill="#001f71"/>
+            <path d="M10 12h20v4H10zM10 18h16v4H10zM10 24h20v4H10z" fill="#4ba8f0"/>
+          </svg>
+          <span>Elite Dental Force</span>
+        </a>
+
+        <nav class="nav">
+          <ul class="nav-list">
+            <li class="has-dropdown">
+              <a href="platform.html" class="nav-link active">Platform</a>
+              <ul class="dropdown">
+                <li><a href="platform.html">Platform Overview</a></li>
+                <li><a href="ai-consultants.html">AI Consultants</a></li>
+                <li><a href="edifi.html">EDiFi Software</a></li>
+              </ul>
+            </li>
+            <li class="has-dropdown">
+              <a href="services.html" class="nav-link">Solutions</a>
+              <ul class="dropdown">
+                <li><a href="services.html">Services</a></li>
+                <li><a href="partners.html">Partners</a></li>
+              </ul>
+            </li>
+            <li><a href="resources.html" class="nav-link">Resources</a></li>
+            <li class="has-dropdown">
+              <a href="company.html" class="nav-link">Company</a>
+              <ul class="dropdown">
+                <li><a href="company.html">About Us</a></li>
+                <li><a href="investors.html">Investors</a></li>
+                <li><a href="contact.html">Contact</a></li>
+              </ul>
+            </li>
+          </ul>
+          <div class="nav-cta">
+            <a href="contact.html#sales" class="btn btn-primary">Book a Demo</a>
+          </div>
+        </nav>
+
+        <button class="mobile-toggle" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-split">
+          <div class="hero-content">
+            <span class="hero-badge">Platform Architecture</span>
+            <h1>The Infrastructure Behind Revenue Intelligence</h1>
+            <p class="lead">Elite Dental Force delivers a two-layer platform combining AI-powered decision support with enterprise software infrastructure to transform dental revenue operations.</p>
+            <div class="hero-actions">
+              <a href="contact.html#demo" class="btn btn-white btn-lg">Book a Demo</a>
+              <a href="#architecture" class="btn btn-secondary btn-lg" style="border-color: white; color: white;">See Architecture</a>
+            </div>
+          </div>
+          <div class="hero-visual">
+            <div class="product-visual">
+              <img src="../images/platform-overview.png" alt="Elite Dental Force Platform Architecture Overview">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Problem Definition -->
+    <section class="section">
+      <div class="container">
+        <div class="split-section">
+          <div class="split-content">
+            <span class="overline" style="color: var(--color-interactive); font-size: var(--text-sm); font-weight: var(--font-semibold); text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: var(--space-4);">The Problem</span>
+            <h2>Uncertainty Costs You Revenue</h2>
+            <p>Dental practices face constant challenges with eligibility verification, claim denials, and revenue leakage. Manual processes, disconnected systems, and lack of real-time data create:</p>
+            <ul style="margin: var(--space-6) 0;">
+              <li style="display: flex; align-items: flex-start; gap: var(--space-3); padding: var(--space-3) 0; color: var(--color-text-light);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2" style="flex-shrink: 0; margin-top: 2px;"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
+                <span><strong>Claim denials</strong> that erode profitability and create administrative burden</span>
+              </li>
+              <li style="display: flex; align-items: flex-start; gap: var(--space-3); padding: var(--space-3) 0; color: var(--color-text-light);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2" style="flex-shrink: 0; margin-top: 2px;"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
+                <span><strong>Eligibility surprises</strong> that frustrate patients and disrupt scheduling</span>
+              </li>
+              <li style="display: flex; align-items: flex-start; gap: var(--space-3); padding: var(--space-3) 0; color: var(--color-text-light);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2" style="flex-shrink: 0; margin-top: 2px;"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
+                <span><strong>Inconsistent workflows</strong> that vary by team member and location</span>
+              </li>
+              <li style="display: flex; align-items: flex-start; gap: var(--space-3); padding: var(--space-3) 0; color: var(--color-text-light);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2" style="flex-shrink: 0; margin-top: 2px;"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
+                <span><strong>Limited visibility</strong> into revenue performance until it's too late</span>
+              </li>
+            </ul>
+          </div>
+          <div class="split-visual">
+            <div class="product-visual">
+              <img src="../images/platform-problem.png" alt="Visual representation of dental revenue challenges">
+              <div class="product-visual-caption">Common revenue challenges in dental practices</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Two-Layer Architecture -->
+    <section class="section bg-light" id="architecture">
+      <div class="container">
+        <div class="section-header">
+          <span class="overline">Our Solution</span>
+          <h2>Two-Layer Platform Architecture</h2>
+          <p>A comprehensive approach that addresses both the human and technology dimensions of revenue management.</p>
+        </div>
+
+        <!-- Architecture Diagram -->
+        <div class="product-visual mb-16" style="max-width: 900px; margin: 0 auto var(--space-16);">
+          <img src="../images/architecture-diagram.png" alt="Elite Dental Force Two-Layer Architecture Diagram showing AI Consultants and EDiFi Platform">
+          <div class="product-visual-caption">Elite Dental Force Platform Architecture - AI Consultants + EDiFi Software</div>
+        </div>
+
+        <div class="grid grid-2" style="gap: var(--space-12);">
+          <!-- Layer 1: AI Consultants -->
+          <div style="background: var(--color-white); padding: var(--space-10); border-radius: var(--radius-xl); border: 2px solid var(--color-interactive);">
+            <div style="display: flex; align-items: center; gap: var(--space-4); margin-bottom: var(--space-6);">
+              <div style="width: 64px; height: 64px; background: var(--color-alt-bg); border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center;">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#4ba8f0" stroke-width="2">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+              </div>
+              <div>
+                <span style="font-size: var(--text-sm); color: var(--color-interactive); font-weight: var(--font-semibold);">LAYER 1</span>
+                <h3 style="margin-bottom: 0;">AI Consultants</h3>
+              </div>
+            </div>
+            <p style="font-size: var(--text-lg); margin-bottom: var(--space-6);">Human-guided intelligence that standardizes decision-making across your organization.</p>
+            <ul>
+              <li style="display: flex; align-items: center; gap: var(--space-2); padding: var(--space-2) 0; color: var(--color-text-light);">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4ba8f0" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Role-specific guidance
+              </li>
+              <li style="display: flex; align-items: center; gap: var(--space-2); padding: var(--space-2) 0; color: var(--color-text-light);">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4ba8f0" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Real-time decision support
+              </li>
+              <li style="display: flex; align-items: center; gap: var(--space-2); padding: var(--space-2) 0; color: var(--color-text-light);">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4ba8f0" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Workflow standardization
+              </li>
+              <li style="display: flex; align-items: center; gap: var(--space-2); padding: var(--space-2) 0; color: var(--color-text-light);">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4ba8f0" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Training and onboarding
+              </li>
+            </ul>
+            <a href="ai-consultants.html" class="btn btn-primary" style="margin-top: var(--space-6);">Learn More</a>
+          </div>
+
+          <!-- Layer 2: EDiFi Platform -->
+          <div style="background: var(--color-white); padding: var(--space-10); border-radius: var(--radius-xl); border: 2px solid var(--color-structural);">
+            <div style="display: flex; align-items: center; gap: var(--space-4); margin-bottom: var(--space-6);">
+              <div style="width: 64px; height: 64px; background: var(--color-alt-bg); border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center;">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#095ba7" stroke-width="2">
+                  <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                  <line x1="8" y1="21" x2="16" y2="21"></line>
+                  <line x1="12" y1="17" x2="12" y2="21"></line>
+                </svg>
+              </div>
+              <div>
+                <span style="font-size: var(--text-sm); color: var(--color-structural); font-weight: var(--font-semibold);">LAYER 2</span>
+                <h3 style="margin-bottom: 0;">EDiFi Software</h3>
+              </div>
+            </div>
+            <p style="font-size: var(--text-lg); margin-bottom: var(--space-6);">Enterprise infrastructure that powers intelligent revenue operations.</p>
+            <ul>
+              <li style="display: flex; align-items: center; gap: var(--space-2); padding: var(--space-2) 0; color: var(--color-text-light);">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#095ba7" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Eligibility Intelligence
+              </li>
+              <li style="display: flex; align-items: center; gap: var(--space-2); padding: var(--space-2) 0; color: var(--color-text-light);">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#095ba7" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Revenue analytics
+              </li>
+              <li style="display: flex; align-items: center; gap: var(--space-2); padding: var(--space-2) 0; color: var(--color-text-light);">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#095ba7" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Claims optimization
+              </li>
+              <li style="display: flex; align-items: center; gap: var(--space-2); padding: var(--space-2) 0; color: var(--color-text-light);">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#095ba7" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                PMS integrations
+              </li>
+            </ul>
+            <a href="edifi.html" class="btn btn-secondary" style="margin-top: var(--space-6);">Learn More</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Core Capabilities -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="overline">Capabilities</span>
+          <h2>What the Platform Delivers</h2>
+          <p>Comprehensive functionality designed to address every aspect of dental revenue management.</p>
+        </div>
+
+        <div class="feature-grid">
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"></path>
+                <path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                <path d="M21 21v-2a4 4 0 0 0-3-3.85"></path>
+              </svg>
+            </div>
+            <h3>Eligibility Intelligence</h3>
+            <p>Real-time verification with predictive insights that identify potential coverage issues before they impact revenue.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="12" y1="1" x2="12" y2="23"></line>
+                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+              </svg>
+            </div>
+            <h3>Revenue Optimization</h3>
+            <p>Identify and capture revenue opportunities through intelligent coding suggestions and fee schedule optimization.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+                <polyline points="10 9 9 9 8 9"></polyline>
+              </svg>
+            </div>
+            <h3>Claims Management</h3>
+            <p>Streamlined submission workflows with real-time tracking and intelligent denial prevention.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="18" y1="20" x2="18" y2="10"></line>
+                <line x1="12" y1="20" x2="12" y2="4"></line>
+                <line x1="6" y1="20" x2="6" y2="14"></line>
+              </svg>
+            </div>
+            <h3>Analytics & Reporting</h3>
+            <p>Comprehensive dashboards with actionable insights into practice performance, trends, and opportunities.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="16 18 22 12 16 6"></polyline>
+                <polyline points="8 6 2 12 8 18"></polyline>
+              </svg>
+            </div>
+            <h3>Workflow Automation</h3>
+            <p>Automate routine tasks and standardize processes across your organization for consistent execution.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="3"></circle>
+                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+              </svg>
+            </div>
+            <h3>Team Collaboration</h3>
+            <p>Role-based access and communication tools that keep everyone aligned on revenue goals.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Integrations -->
+    <section class="section bg-alt">
+      <div class="container">
+        <div class="section-header">
+          <span class="overline">Integrations</span>
+          <h2>Connects With Your Existing Systems</h2>
+          <p>Seamless integration with leading practice management systems and dental software.</p>
+        </div>
+
+        <div class="trust-bar-logos" style="background: var(--color-white); padding: var(--space-12); border-radius: var(--radius-xl);">
+          <img src="../images/logos/integration-1.png" alt="Integration Partner">
+          <img src="../images/logos/integration-2.png" alt="Integration Partner">
+          <img src="../images/logos/integration-3.png" alt="Integration Partner">
+          <img src="../images/logos/integration-4.png" alt="Integration Partner">
+          <img src="../images/logos/integration-5.png" alt="Integration Partner">
+        </div>
+      </div>
+    </section>
+
+    <!-- Security Summary -->
+    <section class="section">
+      <div class="container">
+        <div class="split-section">
+          <div class="split-visual">
+            <div class="product-visual">
+              <img src="../images/security-compliance.png" alt="Security and compliance certifications">
+            </div>
+          </div>
+          <div class="split-content">
+            <span class="overline" style="color: var(--color-interactive); font-size: var(--text-sm); font-weight: var(--font-semibold); text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: var(--space-4);">Security & Compliance</span>
+            <h2>Enterprise-Grade Security</h2>
+            <p>Elite Dental Force maintains rigorous security standards to protect your practice and patient data.</p>
+            <ul style="margin: var(--space-6) 0;">
+              <li style="display: flex; align-items: center; gap: var(--space-3); padding: var(--space-3) 0; color: var(--color-text-light);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4ba8f0" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                HIPAA-aligned data handling practices
+              </li>
+              <li style="display: flex; align-items: center; gap: var(--space-3); padding: var(--space-3) 0; color: var(--color-text-light);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4ba8f0" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                End-to-end encryption for all data
+              </li>
+              <li style="display: flex; align-items: center; gap: var(--space-3); padding: var(--space-3) 0; color: var(--color-text-light);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4ba8f0" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                SOC 2 Type II compliance
+              </li>
+              <li style="display: flex; align-items: center; gap: var(--space-3); padding: var(--space-3) 0; color: var(--color-text-light);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4ba8f0" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                Regular third-party security audits
+              </li>
+            </ul>
+            <a href="company.html#security" class="btn btn-secondary">Learn More About Security</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Band -->
+    <section class="cta-band">
+      <div class="container">
+        <h2>See the Platform in Action</h2>
+        <p>Schedule a personalized demo to explore how Elite Dental Force can transform your revenue operations.</p>
+        <div class="cta-band-actions">
+          <a href="contact.html#demo" class="btn btn-white btn-lg">Book a Demo</a>
+          <a href="contact.html" class="btn btn-secondary btn-lg" style="border-color: white; color: white;">Contact Sales</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="../index.html" class="logo">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="40" height="40" rx="8" fill="#4ba8f0"/>
+              <path d="M10 12h20v4H10zM10 18h16v4H10zM10 24h20v4H10z" fill="#ffffff"/>
+            </svg>
+            <span style="color: white;">Elite Dental Force</span>
+          </a>
+          <p>The infrastructure leader in dental revenue intelligence.</p>
+        </div>
+
+        <div class="footer-column">
+          <h5 class="footer-heading">Platform</h5>
+          <ul class="footer-links">
+            <li><a href="platform.html">Overview</a></li>
+            <li><a href="ai-consultants.html">AI Consultants</a></li>
+            <li><a href="edifi.html">EDiFi Software</a></li>
+            <li><a href="services.html">Services</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h5 class="footer-heading">Resources</h5>
+          <ul class="footer-links">
+            <li><a href="resources.html#blog">Blog</a></li>
+            <li><a href="resources.html#podcast">Podcast</a></li>
+            <li><a href="resources.html#webinars">Webinars</a></li>
+            <li><a href="resources.html#news">Latest News</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h5 class="footer-heading">Company</h5>
+          <ul class="footer-links">
+            <li><a href="company.html">About Us</a></li>
+            <li><a href="company.html#security">Security</a></li>
+            <li><a href="company.html#faq">FAQ</a></li>
+            <li><a href="partners.html">Partners</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h5 class="footer-heading">Contact</h5>
+          <ul class="footer-links">
+            <li><a href="contact.html#sales">Sales</a></li>
+            <li><a href="contact.html#support">Support</a></li>
+            <li><a href="contact.html#partnerships">Partnerships</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-copyright">&copy; 2025 Elite Dental Force Inc. All rights reserved.</p>
+        <div class="footer-legal">
+          <a href="terms.html">Terms of Service</a>
+          <a href="privacy.html">Privacy Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
