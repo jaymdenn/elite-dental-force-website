@@ -18,10 +18,7 @@
     <div class="container">
       <div class="header-inner">
         <a href="../index.html" class="logo">
-          <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect width="40" height="40" rx="8" fill="#001f71"/>
-            <path d="M10 12h20v4H10zM10 18h16v4H10zM10 24h20v4H10z" fill="#4ba8f0"/>
-          </svg>
+          <img src="../images/Original Logo Symbol.png" alt="Elite Dental Force" width="40" height="40">
           <span>Elite Dental Force</span>
         </a>
 
@@ -42,11 +39,21 @@
                 <li><a href="partners.html">Partners</a></li>
               </ul>
             </li>
-            <li><a href="resources.html" class="nav-link">Resources</a></li>
+            <li class="has-dropdown">
+              <a href="resources.html" class="nav-link">Resources</a>
+              <ul class="dropdown">
+                <li><a href="resources/blog.html">Blog</a></li>
+                <li><a href="resources/podcast.html">Podcast</a></li>
+                <li><a href="resources/webinars.html">Webinars</a></li>
+                <li><a href="resources/news.html">News</a></li>
+              </ul>
+            </li>
             <li class="has-dropdown">
               <a href="company.html" class="nav-link">Company</a>
               <ul class="dropdown">
                 <li><a href="company.html">About Us</a></li>
+                <li><a href="company/security.html">Security</a></li>
+                <li><a href="company/faq.html">FAQ</a></li>
                 <li><a href="investors.html">Investors</a></li>
                 <li><a href="contact.html">Contact</a></li>
               </ul>
@@ -279,7 +286,7 @@
         </div>
 
         <!-- Front Desk -->
-        <div class="split-section">
+        <div class="split-section" style="margin-bottom: var(--space-20);">
           <div class="split-visual">
             <div class="product-visual">
               <img src="../images/use-case-front-desk.png" alt="AI Consultant interface for front desk staff">
@@ -294,6 +301,46 @@
               <li style="padding: var(--space-2) 0; color: var(--color-text-light);">Patient-friendly benefit explanations</li>
               <li style="padding: var(--space-2) 0; color: var(--color-text-light);">Cost estimate generation</li>
               <li style="padding: var(--space-2) 0; color: var(--color-text-light);">Insurance card validation</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Doctor -->
+        <div class="split-section reverse" style="margin-bottom: var(--space-20);">
+          <div class="split-visual">
+            <div class="product-visual">
+              <img src="../images/use-case-doctor.png" alt="AI Consultant interface for doctors">
+              <div class="product-visual-caption">Doctor Interface with treatment planning support</div>
+            </div>
+          </div>
+          <div class="split-content">
+            <h3>Doctors</h3>
+            <p>Focus on patient care while AI handles the administrative complexity of insurance and coding.</p>
+            <ul style="margin: var(--space-4) 0;">
+              <li style="padding: var(--space-2) 0; color: var(--color-text-light);">Treatment plan coverage verification</li>
+              <li style="padding: var(--space-2) 0; color: var(--color-text-light);">Procedure code recommendations</li>
+              <li style="padding: var(--space-2) 0; color: var(--color-text-light);">Documentation requirements guidance</li>
+              <li style="padding: var(--space-2) 0; color: var(--color-text-light);">Pre-authorization status tracking</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Ops Leader -->
+        <div class="split-section">
+          <div class="split-visual">
+            <div class="product-visual">
+              <img src="../images/use-case-ops-leader.png" alt="AI Consultant interface for operations leaders">
+              <div class="product-visual-caption">Operations Dashboard with multi-location insights</div>
+            </div>
+          </div>
+          <div class="split-content">
+            <h3>Operations Leaders</h3>
+            <p>Gain enterprise-wide visibility and standardize processes across all locations.</p>
+            <ul style="margin: var(--space-4) 0;">
+              <li style="padding: var(--space-2) 0; color: var(--color-text-light);">Multi-location performance comparison</li>
+              <li style="padding: var(--space-2) 0; color: var(--color-text-light);">Workflow standardization tools</li>
+              <li style="padding: var(--space-2) 0; color: var(--color-text-light);">Revenue trend analysis and forecasting</li>
+              <li style="padding: var(--space-2) 0; color: var(--color-text-light);">Team productivity metrics</li>
             </ul>
           </div>
         </div>
@@ -468,10 +515,7 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <a href="../index.html" class="logo">
-            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect width="40" height="40" rx="8" fill="#4ba8f0"/>
-              <path d="M10 12h20v4H10zM10 18h16v4H10zM10 24h20v4H10z" fill="#ffffff"/>
-            </svg>
+            <img src="../images/Original Logo Symbol.png" alt="Elite Dental Force" width="40" height="40">
             <span style="color: white;">Elite Dental Force</span>
           </a>
           <p>The infrastructure leader in dental revenue intelligence.</p>
@@ -490,9 +534,9 @@
         <div class="footer-column">
           <h5 class="footer-heading">Resources</h5>
           <ul class="footer-links">
-            <li><a href="resources.html#blog">Blog</a></li>
-            <li><a href="resources.html#podcast">Podcast</a></li>
-            <li><a href="resources.html#webinars">Webinars</a></li>
+            <li><a href="resources/blog.html">Blog</a></li>
+            <li><a href="resources/podcast.html">Podcast</a></li>
+            <li><a href="resources/webinars.html">Webinars</a></li>
           </ul>
         </div>
 
@@ -500,8 +544,8 @@
           <h5 class="footer-heading">Company</h5>
           <ul class="footer-links">
             <li><a href="company.html">About Us</a></li>
-            <li><a href="company.html#security">Security</a></li>
-            <li><a href="company.html#faq">FAQ</a></li>
+            <li><a href="company/security.html">Security</a></li>
+            <li><a href="company/faq.html">FAQ</a></li>
           </ul>
         </div>
 

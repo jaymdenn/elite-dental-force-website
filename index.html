@@ -25,6 +25,54 @@
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="images/favicon.png">
+
+  <!-- Schema Markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Elite Dental Force",
+    "alternateName": "EDF",
+    "url": "https://www.elitedentalforce.com",
+    "logo": "https://www.elitedentalforce.com/images/logo.png",
+    "description": "The infrastructure leader in dental revenue intelligence. AI-powered consultants and EDiFi software platform for eligibility verification and revenue optimization.",
+    "sameAs": [
+      "https://www.linkedin.com/company/elitedentalforce",
+      "https://twitter.com/elitedentalforce"
+    ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "",
+      "contactType": "sales",
+      "areaServed": "US",
+      "availableLanguage": "English"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "US"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "EDiFi",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD",
+      "description": "Contact for pricing"
+    },
+    "description": "Dental revenue intelligence platform for eligibility verification, claims optimization, and practice analytics.",
+    "provider": {
+      "@type": "Organization",
+      "name": "Elite Dental Force"
+    }
+  }
+  </script>
 </head>
 <body>
   <!-- Header -->
@@ -32,10 +80,7 @@
     <div class="container">
       <div class="header-inner">
         <a href="/" class="logo">
-          <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect width="40" height="40" rx="8" fill="#001f71"/>
-            <path d="M10 12h20v4H10zM10 18h16v4H10zM10 24h20v4H10z" fill="#4ba8f0"/>
-          </svg>
+          <img src="images/Original Logo Symbol.png" alt="Elite Dental Force" width="40" height="40">
           <span>Elite Dental Force</span>
         </a>
 
@@ -56,11 +101,21 @@
                 <li><a href="pages/partners.html">Partners</a></li>
               </ul>
             </li>
-            <li><a href="pages/resources.html" class="nav-link">Resources</a></li>
+            <li class="has-dropdown">
+              <a href="pages/resources.html" class="nav-link">Resources</a>
+              <ul class="dropdown">
+                <li><a href="pages/resources/blog.html">Blog</a></li>
+                <li><a href="pages/resources/podcast.html">Podcast</a></li>
+                <li><a href="pages/resources/webinars.html">Webinars</a></li>
+                <li><a href="pages/resources/news.html">News</a></li>
+              </ul>
+            </li>
             <li class="has-dropdown">
               <a href="pages/company.html" class="nav-link">Company</a>
               <ul class="dropdown">
                 <li><a href="pages/company.html">About Us</a></li>
+                <li><a href="pages/company/security.html">Security</a></li>
+                <li><a href="pages/company/faq.html">FAQ</a></li>
                 <li><a href="pages/investors.html">Investors</a></li>
                 <li><a href="pages/contact.html">Contact</a></li>
               </ul>
@@ -377,10 +432,7 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <a href="/" class="logo">
-            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect width="40" height="40" rx="8" fill="#4ba8f0"/>
-              <path d="M10 12h20v4H10zM10 18h16v4H10zM10 24h20v4H10z" fill="#ffffff"/>
-            </svg>
+            <img src="images/Original Logo Symbol.png" alt="Elite Dental Force" width="40" height="40">
             <span style="color: white;">Elite Dental Force</span>
           </a>
           <p>The infrastructure leader in dental revenue intelligence. Transforming how dental practices manage eligibility, billing, and revenue optimization.</p>
@@ -399,10 +451,10 @@
         <div class="footer-column">
           <h5 class="footer-heading">Resources</h5>
           <ul class="footer-links">
-            <li><a href="pages/resources.html#blog">Blog</a></li>
-            <li><a href="pages/resources.html#podcast">Podcast</a></li>
-            <li><a href="pages/resources.html#webinars">Webinars</a></li>
-            <li><a href="pages/resources.html#news">Latest News</a></li>
+            <li><a href="pages/resources/blog.html">Blog</a></li>
+            <li><a href="pages/resources/podcast.html">Podcast</a></li>
+            <li><a href="pages/resources/webinars.html">Webinars</a></li>
+            <li><a href="pages/resources/news.html">Latest News</a></li>
           </ul>
         </div>
 
@@ -410,8 +462,8 @@
           <h5 class="footer-heading">Company</h5>
           <ul class="footer-links">
             <li><a href="pages/company.html">About Us</a></li>
-            <li><a href="pages/company.html#security">Security</a></li>
-            <li><a href="pages/company.html#faq">FAQ</a></li>
+            <li><a href="pages/company/security.html">Security</a></li>
+            <li><a href="pages/company/faq.html">FAQ</a></li>
             <li><a href="pages/partners.html">Partners</a></li>
             <li><a href="pages/investors.html">Investors</a></li>
           </ul>
