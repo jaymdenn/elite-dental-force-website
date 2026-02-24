@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
   initSmoothScroll();
   initFormValidation();
   initScrollAnimations();
+  initGlassRippleAnimation();
 });
 
 /**
@@ -365,4 +366,323 @@ function throttle(func, limit) {
       setTimeout(() => inThrottle = false, limit);
     }
   };
+}
+
+/**
+ * Glass Ripple Animation with Node/Circuit Pattern
+ * Creates a fragmented glass effect with rippling nodes
+ */
+function initGlassRippleAnimation() {
+  const canvas = document.getElementById('glassRippleCanvas');
+  if (!canvas) return;
+
+  const ctx = canvas.getContext('2d');
+  let animationId;
+  let nodes = [];
+  let ripples = [];
+  let mouseX = -1000;
+  let mouseY = -1000;
+
+  // Configuration
+  const config = {
+    nodeCount: 80,
+    nodeRadius: 2,
+    connectionDistance: 150,
+    rippleSpeed: 2,
+    rippleMaxRadius: 300,
+    rippleFadeSpeed: 0.015,
+    mouseInfluenceRadius: 200,
+    baseAlpha: 0.15,
+    glowIntensity: 0.4
+  };
+
+  // Resize canvas to match container
+  function resizeCanvas() {
+    const hero = canvas.closest('.hero');
+    if (!hero) return;
+
+    const rect = hero.getBoundingClientRect();
+    const dpr = window.devicePixelRatio || 1;
+
+    canvas.width = rect.width * dpr;
+    canvas.height = rect.height * dpr;
+    canvas.style.width = rect.width + 'px';
+    canvas.style.height = rect.height + 'px';
+
+    ctx.scale(dpr, dpr);
+
+    // Reinitialize nodes on resize
+    initNodes(rect.width, rect.height);
+  }
+
+  // Create nodes in a semi-random grid pattern (circuit-like)
+  function initNodes(width, height) {
+    nodes = [];
+    const gridSize = 80;
+    const cols = Math.ceil(width / gridSize) + 1;
+    const rows = Math.ceil(height / gridSize) + 1;
+
+    for (let i = 0; i < cols; i++) {
+      for (let j = 0; j < rows; j++) {
+        // Add randomness to grid positions for organic feel
+        if (Math.random() > 0.3) {
+          nodes.push({
+            x: i * gridSize + (Math.random() - 0.5) * gridSize * 0.8,
+            y: j * gridSize + (Math.random() - 0.5) * gridSize * 0.8,
+            baseX: i * gridSize,
+            baseY: j * gridSize,
+            vx: 0,
+            vy: 0,
+            radius: config.nodeRadius + Math.random() * 1.5,
+            pulsePhase: Math.random() * Math.PI * 2,
+            pulseSpeed: 0.02 + Math.random() * 0.02
+          });
+        }
+      }
+    }
+
+    // Limit total nodes
+    if (nodes.length > config.nodeCount) {
+      nodes = nodes.sort(() => Math.random() - 0.5).slice(0, config.nodeCount);
+    }
+  }
+
+  // Create a ripple effect
+  function createRipple(x, y) {
+    ripples.push({
+      x: x,
+      y: y,
+      radius: 0,
+      alpha: 0.6,
+      lineWidth: 2
+    });
+  }
+
+  // Auto-generate ripples periodically
+  function autoRipple(width, height) {
+    if (Math.random() < 0.008) {
+      createRipple(
+        Math.random() * width,
+        Math.random() * height
+      );
+    }
+  }
+
+  // Update ripples
+  function updateRipples() {
+    ripples = ripples.filter(ripple => {
+      ripple.radius += config.rippleSpeed;
+      ripple.alpha -= config.rippleFadeSpeed;
+      ripple.lineWidth = Math.max(0.5, 2 - ripple.radius / 100);
+      return ripple.alpha > 0 && ripple.radius < config.rippleMaxRadius;
+    });
+  }
+
+  // Update node positions with subtle movement
+  function updateNodes(width, height) {
+    const time = Date.now() * 0.001;
+
+    nodes.forEach(node => {
+      // Subtle floating animation
+      node.x = node.baseX + Math.sin(time + node.pulsePhase) * 3;
+      node.y = node.baseY + Math.cos(time * 0.7 + node.pulsePhase) * 3;
+
+      // Mouse influence - nodes gently move away
+      const dx = node.x - mouseX;
+      const dy = node.y - mouseY;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+
+      if (dist < config.mouseInfluenceRadius && dist > 0) {
+        const force = (config.mouseInfluenceRadius - dist) / config.mouseInfluenceRadius;
+        node.x += (dx / dist) * force * 15;
+        node.y += (dy / dist) * force * 15;
+      }
+
+      // Update pulse phase
+      node.pulsePhase += node.pulseSpeed;
+    });
+  }
+
+  // Draw the glass effect
+  function draw(width, height) {
+    ctx.clearRect(0, 0, width, height);
+
+    const time = Date.now() * 0.001;
+
+    // Draw connections between nearby nodes (circuit lines)
+    ctx.lineCap = 'round';
+
+    for (let i = 0; i < nodes.length; i++) {
+      for (let j = i + 1; j < nodes.length; j++) {
+        const dx = nodes[i].x - nodes[j].x;
+        const dy = nodes[i].y - nodes[j].y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+
+        if (dist < config.connectionDistance) {
+          const alpha = (1 - dist / config.connectionDistance) * config.baseAlpha;
+
+          // Create gradient for glass-like connection
+          const gradient = ctx.createLinearGradient(
+            nodes[i].x, nodes[i].y,
+            nodes[j].x, nodes[j].y
+          );
+          gradient.addColorStop(0, `rgba(75, 168, 240, ${alpha})`);
+          gradient.addColorStop(0.5, `rgba(0, 212, 255, ${alpha * 0.8})`);
+          gradient.addColorStop(1, `rgba(75, 168, 240, ${alpha})`);
+
+          ctx.strokeStyle = gradient;
+          ctx.lineWidth = 1;
+          ctx.beginPath();
+          ctx.moveTo(nodes[i].x, nodes[i].y);
+          ctx.lineTo(nodes[j].x, nodes[j].y);
+          ctx.stroke();
+        }
+      }
+    }
+
+    // Draw ripples with glass refraction effect
+    ripples.forEach(ripple => {
+      // Outer ring
+      ctx.strokeStyle = `rgba(75, 168, 240, ${ripple.alpha * 0.5})`;
+      ctx.lineWidth = ripple.lineWidth;
+      ctx.beginPath();
+      ctx.arc(ripple.x, ripple.y, ripple.radius, 0, Math.PI * 2);
+      ctx.stroke();
+
+      // Inner glow ring
+      ctx.strokeStyle = `rgba(0, 212, 255, ${ripple.alpha * 0.3})`;
+      ctx.lineWidth = ripple.lineWidth * 2;
+      ctx.beginPath();
+      ctx.arc(ripple.x, ripple.y, ripple.radius * 0.8, 0, Math.PI * 2);
+      ctx.stroke();
+
+      // Affect nearby nodes (glass distortion effect)
+      nodes.forEach(node => {
+        const dx = node.x - ripple.x;
+        const dy = node.y - ripple.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+
+        if (Math.abs(dist - ripple.radius) < 30) {
+          const intensity = (1 - Math.abs(dist - ripple.radius) / 30) * ripple.alpha;
+          node.x += (dx / dist) * intensity * 2;
+          node.y += (dy / dist) * intensity * 2;
+        }
+      });
+    });
+
+    // Draw nodes with glass-like glow
+    nodes.forEach(node => {
+      const pulse = Math.sin(node.pulsePhase) * 0.3 + 0.7;
+      const glowRadius = node.radius * 3;
+
+      // Outer glow
+      const glowGradient = ctx.createRadialGradient(
+        node.x, node.y, 0,
+        node.x, node.y, glowRadius
+      );
+      glowGradient.addColorStop(0, `rgba(0, 212, 255, ${config.glowIntensity * pulse})`);
+      glowGradient.addColorStop(0.5, `rgba(75, 168, 240, ${config.glowIntensity * 0.3 * pulse})`);
+      glowGradient.addColorStop(1, 'rgba(75, 168, 240, 0)');
+
+      ctx.fillStyle = glowGradient;
+      ctx.beginPath();
+      ctx.arc(node.x, node.y, glowRadius, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Core node
+      ctx.fillStyle = `rgba(255, 255, 255, ${0.6 * pulse})`;
+      ctx.beginPath();
+      ctx.arc(node.x, node.y, node.radius * pulse, 0, Math.PI * 2);
+      ctx.fill();
+    });
+
+    // Draw subtle hexagonal fragments for glass texture
+    drawGlassFragments(width, height, time);
+  }
+
+  // Draw subtle hexagonal glass fragments
+  function drawGlassFragments(width, height, time) {
+    const fragmentSize = 120;
+    const cols = Math.ceil(width / fragmentSize) + 1;
+    const rows = Math.ceil(height / fragmentSize) + 1;
+
+    ctx.strokeStyle = 'rgba(75, 168, 240, 0.03)';
+    ctx.lineWidth = 1;
+
+    for (let i = 0; i < cols; i++) {
+      for (let j = 0; j < rows; j++) {
+        const x = i * fragmentSize + (j % 2) * (fragmentSize / 2);
+        const y = j * fragmentSize * 0.866;
+
+        // Subtle animation
+        const offset = Math.sin(time * 0.5 + i * 0.3 + j * 0.2) * 2;
+
+        ctx.beginPath();
+        for (let k = 0; k < 6; k++) {
+          const angle = (k * Math.PI) / 3 - Math.PI / 6;
+          const px = x + Math.cos(angle) * (fragmentSize / 2 + offset);
+          const py = y + Math.sin(angle) * (fragmentSize / 2 + offset);
+
+          if (k === 0) {
+            ctx.moveTo(px, py);
+          } else {
+            ctx.lineTo(px, py);
+          }
+        }
+        ctx.closePath();
+        ctx.stroke();
+      }
+    }
+  }
+
+  // Animation loop
+  function animate() {
+    const hero = canvas.closest('.hero');
+    if (!hero) return;
+
+    const rect = hero.getBoundingClientRect();
+    const width = rect.width;
+    const height = rect.height;
+
+    autoRipple(width, height);
+    updateRipples();
+    updateNodes(width, height);
+    draw(width, height);
+
+    animationId = requestAnimationFrame(animate);
+  }
+
+  // Event listeners
+  const hero = canvas.closest('.hero');
+  if (hero) {
+    hero.addEventListener('mousemove', (e) => {
+      const rect = hero.getBoundingClientRect();
+      mouseX = e.clientX - rect.left;
+      mouseY = e.clientY - rect.top;
+    });
+
+    hero.addEventListener('mouseleave', () => {
+      mouseX = -1000;
+      mouseY = -1000;
+    });
+
+    hero.addEventListener('click', (e) => {
+      const rect = hero.getBoundingClientRect();
+      createRipple(e.clientX - rect.left, e.clientY - rect.top);
+    });
+  }
+
+  // Handle resize
+  window.addEventListener('resize', debounce(resizeCanvas, 150));
+
+  // Initialize
+  resizeCanvas();
+  animate();
+
+  // Cleanup on page unload
+  window.addEventListener('beforeunload', () => {
+    if (animationId) {
+      cancelAnimationFrame(animationId);
+    }
+  });
 }
