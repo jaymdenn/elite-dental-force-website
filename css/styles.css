@@ -699,8 +699,14 @@ p {
 
 .hero-visual img {
   width: 100%;
-  border-radius: var(--radius-xl);
-  box-shadow: var(--shadow-xl);
+}
+
+/* Remove box styling from hero product visual */
+.hero-visual .product-visual {
+  border: none;
+  background: transparent;
+  box-shadow: none;
+  border-radius: 0;
 }
 
 /* Hero with split layout */
