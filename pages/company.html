@@ -4,13 +4,307 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="About Elite Dental Force - Learn about our mission, leadership team, and commitment to transforming dental revenue intelligence.">
-  <title>Company - Elite Dental Force</title>
+  <title>About Us - Elite Dental Force</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/styles.css">
   <link rel="icon" type="image/png" href="../images/favicon.png">
+
+  <style>
+    /* About Page Specific Styles */
+    .about-hero {
+      position: relative;
+      padding: calc(100px + var(--space-16)) 0 var(--space-16);
+      overflow: hidden;
+    }
+
+    .about-hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .founder-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-16);
+      align-items: center;
+    }
+
+    .founder-image {
+      position: relative;
+    }
+
+    .founder-image img {
+      width: 100%;
+      max-width: 400px;
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-xl);
+    }
+
+    .founder-image::after {
+      content: '';
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      right: -20px;
+      bottom: -20px;
+      border: 2px solid var(--color-interactive);
+      border-radius: var(--radius-xl);
+      z-index: -1;
+      opacity: 0.3;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-6);
+    }
+
+    .team-card {
+      background: var(--color-card-bg);
+      border: 1px solid var(--color-card-border);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      transition: all var(--transition-base);
+    }
+
+    .team-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-glow);
+    }
+
+    .team-card-image {
+      aspect-ratio: 1;
+      overflow: hidden;
+    }
+
+    .team-card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform var(--transition-base);
+    }
+
+    .team-card:hover .team-card-image img {
+      transform: scale(1.05);
+    }
+
+    .team-card-info {
+      padding: var(--space-4);
+      text-align: center;
+    }
+
+    .team-card-info h4 {
+      font-size: var(--text-base);
+      margin-bottom: var(--space-1);
+      color: var(--color-white);
+    }
+
+    .team-card-info p {
+      font-size: var(--text-sm);
+      color: var(--color-interactive);
+      margin: 0;
+    }
+
+    .advisors-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: var(--space-8);
+    }
+
+    .advisor-card {
+      text-align: center;
+    }
+
+    .advisor-card-image {
+      width: 140px;
+      height: 140px;
+      border-radius: var(--radius-full);
+      overflow: hidden;
+      margin: 0 auto var(--space-4);
+      border: 3px solid var(--color-card-border);
+      transition: all var(--transition-base);
+    }
+
+    .advisor-card:hover .advisor-card-image {
+      border-color: var(--color-interactive);
+      box-shadow: var(--shadow-glow);
+    }
+
+    .advisor-card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .photo-gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-4);
+    }
+
+    .photo-gallery-item {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      aspect-ratio: 4/3;
+    }
+
+    .photo-gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform var(--transition-base);
+    }
+
+    .photo-gallery-item:hover img {
+      transform: scale(1.05);
+    }
+
+    .photo-gallery-item.featured {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+
+    .partners-scroll {
+      display: flex;
+      overflow: hidden;
+      position: relative;
+      padding: var(--space-8) 0;
+    }
+
+    .partners-scroll::before,
+    .partners-scroll::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 100px;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .partners-scroll::before {
+      left: 0;
+      background: linear-gradient(to right, var(--color-deep) 0%, transparent 100%);
+    }
+
+    .partners-scroll::after {
+      right: 0;
+      background: linear-gradient(to left, var(--color-deep) 0%, transparent 100%);
+    }
+
+    .partners-logos {
+      display: flex;
+      align-items: center;
+      gap: var(--space-12);
+      animation: scroll-left 30s linear infinite;
+    }
+
+    .partners-logos img {
+      height: 50px;
+      width: auto;
+      opacity: 0.8;
+      filter: brightness(0) invert(1);
+      transition: all var(--transition-base);
+    }
+
+    .partners-logos img:hover {
+      opacity: 1;
+    }
+
+    .transformation-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-12);
+      align-items: center;
+    }
+
+    .transformation-image img {
+      width: 100%;
+      border-radius: var(--radius-xl);
+    }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-6);
+    }
+
+    .value-card {
+      background: var(--color-card-bg);
+      border: 1px solid var(--color-card-border);
+      border-radius: var(--radius-xl);
+      padding: var(--space-8);
+      text-align: center;
+      transition: all var(--transition-base);
+    }
+
+    .value-card:hover {
+      border-color: var(--color-interactive);
+      box-shadow: var(--shadow-glow);
+    }
+
+    .value-icon {
+      width: 64px;
+      height: 64px;
+      background: rgba(75, 168, 240, 0.1);
+      border-radius: var(--radius-lg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto var(--space-4);
+    }
+
+    .value-icon svg {
+      width: 32px;
+      height: 32px;
+      stroke: var(--color-interactive);
+    }
+
+    @media (max-width: 1024px) {
+      .team-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .advisors-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .founder-section {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .founder-image {
+        order: -1;
+        margin: 0 auto;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .team-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .advisors-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .photo-gallery {
+        grid-template-columns: 1fr 1fr;
+      }
+      .photo-gallery-item.featured {
+        grid-column: span 2;
+        grid-row: span 1;
+      }
+      .transformation-section {
+        grid-template-columns: 1fr;
+      }
+      .values-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
   <!-- Header -->
@@ -18,8 +312,7 @@
     <div class="container">
       <div class="header-inner">
         <a href="../index.html" class="logo">
-          <img src="../images/Original Logo Symbol.png" alt="Elite Dental Force" width="56" height="56">
-          <span>Elite Dental Force</span>
+          <img src="../images/Grayscale Transparent.png" alt="Elite Dental Force">
         </a>
 
         <nav class="nav">
@@ -75,292 +368,364 @@
 
   <main>
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="about-hero hero">
       <div class="container">
-        <div class="hero-content" style="max-width: 700px; margin: 0 auto; text-align: center;">
-          <span class="hero-badge">About Us</span>
-          <h1>Building the Future of Dental Revenue Intelligence</h1>
-          <p class="lead">Elite Dental Force exists to transform how dental practices manage revenue through intelligent technology and human-guided expertise.</p>
+        <div class="about-hero-content">
+          <span class="hero-badge">About Elite Dental Force</span>
+          <h1>Empowering Your Practice with AI Solutions</h1>
+          <p class="lead">We're building the infrastructure that transforms dental revenue operations from uncertainty to confidence.</p>
         </div>
       </div>
     </section>
 
-    <!-- Mission & Vision -->
+    <!-- Founder Section -->
     <section class="section">
       <div class="container">
-        <div class="grid grid-2" style="gap: var(--space-12);">
-          <div>
-            <span class="overline" style="color: var(--color-interactive); font-size: var(--text-sm); font-weight: var(--font-semibold); text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: var(--space-4);">Our Mission</span>
-            <h2>Eliminate Revenue Uncertainty</h2>
-            <p style="font-size: var(--text-lg); color: var(--color-text-light);">We believe dental practices shouldn't have to guess about eligibility, wrestle with denials, or struggle with inconsistent workflows. Our mission is to provide the infrastructure and intelligence that transforms revenue operations from a source of friction into a competitive advantage.</p>
+        <div class="founder-section">
+          <div class="founder-content">
+            <span class="overline" style="color: var(--color-interactive); font-size: var(--text-sm); font-weight: var(--font-semibold); text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: var(--space-4);">Our Founder</span>
+            <h2>Benjamin Tuinei</h2>
+            <p class="lead" style="color: var(--color-text-light);">Founder & CEO</p>
+            <p style="color: var(--color-text-light); margin-bottom: var(--space-6);">With over 15 years of experience in dental revenue cycle management, Benjamin founded Elite Dental Force with a vision to democratize access to enterprise-grade revenue intelligence for dental practices of all sizes.</p>
+            <p style="color: var(--color-text-light);">His deep understanding of the challenges facing dental practices, combined with a passion for technology innovation, drives EDF's mission to transform how practices manage their revenue operations.</p>
           </div>
-          <div>
-            <span class="overline" style="color: var(--color-interactive); font-size: var(--text-sm); font-weight: var(--font-semibold); text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: var(--space-4);">Our Vision</span>
-            <h2>Infrastructure Leadership</h2>
-            <p style="font-size: var(--text-lg); color: var(--color-text-light);">We envision a future where every dental practice, from single-location offices to enterprise DSOs, has access to the same caliber of revenue intelligence that was once reserved for the largest healthcare organizations. We're building that future.</p>
+          <div class="founder-image">
+            <img src="../images/team/benjamin-tuinei.png" alt="Benjamin Tuinei - Founder & CEO">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mission & Transformation -->
+    <section class="section bg-light">
+      <div class="container">
+        <div class="transformation-section">
+          <div class="transformation-content">
+            <span class="overline" style="color: var(--color-interactive); font-size: var(--text-sm); font-weight: var(--font-semibold); text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: var(--space-4);">Our Mission</span>
+            <h2>From Chaos to Clarity</h2>
+            <p style="font-size: var(--text-lg); color: var(--color-text-light); margin-bottom: var(--space-6);">We believe dental practices shouldn't struggle with eligibility guesswork, claim denials, or inconsistent workflows. Our mission is to provide intelligent infrastructure that transforms revenue operations into a competitive advantage.</p>
+            <ul style="list-style: none; padding: 0; margin: 0;">
+              <li style="display: flex; align-items: center; gap: var(--space-3); padding: var(--space-3) 0; color: var(--color-text-light);">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4ba8f0" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Real-time eligibility verification
+              </li>
+              <li style="display: flex; align-items: center; gap: var(--space-3); padding: var(--space-3) 0; color: var(--color-text-light);">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4ba8f0" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                AI-powered decision support
+              </li>
+              <li style="display: flex; align-items: center; gap: var(--space-3); padding: var(--space-3) 0; color: var(--color-text-light);">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4ba8f0" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Standardized workflows at scale
+              </li>
+              <li style="display: flex; align-items: center; gap: var(--space-3); padding: var(--space-3) 0; color: var(--color-text-light);">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4ba8f0" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Enterprise-grade analytics
+              </li>
+            </ul>
+          </div>
+          <div class="transformation-image">
+            <img src="../images/about/transformation.png" alt="Before and after transformation with EDiFi">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Core Values -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="overline">Our Values</span>
+          <h2>What Drives Us</h2>
+          <p>The principles that guide every decision we make.</p>
+        </div>
+
+        <div class="values-grid">
+          <div class="value-card">
+            <div class="value-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              </svg>
+            </div>
+            <h3>Trust</h3>
+            <p style="color: var(--color-text-light);">We earn trust through transparency, security, and consistent delivery on our promises.</p>
+          </div>
+
+          <div class="value-card">
+            <div class="value-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+              </svg>
+            </div>
+            <h3>Innovation</h3>
+            <p style="color: var(--color-text-light);">We continuously push boundaries to deliver solutions that anticipate tomorrow's challenges.</p>
+          </div>
+
+          <div class="value-card">
+            <div class="value-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+            </div>
+            <h3>Partnership</h3>
+            <p style="color: var(--color-text-light);">We succeed when our clients succeed. Your goals are our goals.</p>
           </div>
         </div>
       </div>
     </section>
 
     <!-- Leadership Team -->
-    <section class="section bg-light">
+    <section class="section bg-alt">
       <div class="container">
         <div class="section-header">
           <span class="overline">Leadership</span>
-          <h2>Our Team</h2>
+          <h2>Our Executive Team</h2>
           <p>Experienced leaders driving innovation in dental revenue technology.</p>
         </div>
 
-        <div class="grid grid-3" style="gap: var(--space-8);">
-          <!-- Team Member 1 -->
-          <div style="background: var(--color-white); border-radius: var(--radius-xl); overflow: hidden; box-shadow: var(--shadow-md);">
-            <div style="aspect-ratio: 1; background: var(--color-alt-bg);">
-              <img src="../images/team/ceo.jpg" alt="CEO" style="width: 100%; height: 100%; object-fit: cover;">
+        <div class="team-grid">
+          <div class="team-card">
+            <div class="team-card-image">
+              <img src="../images/team/benjamin-tuinei.png" alt="Benjamin Tuinei">
             </div>
-            <div style="padding: var(--space-6);">
-              <h4 style="margin-bottom: var(--space-1);">Leadership Name</h4>
-              <p style="color: var(--color-interactive); font-size: var(--text-sm); font-weight: var(--font-medium); margin-bottom: var(--space-3);">Chief Executive Officer</p>
-              <p style="font-size: var(--text-sm); color: var(--color-text-muted); margin: 0;">20+ years experience in healthcare technology and dental practice management.</p>
+            <div class="team-card-info">
+              <h4>Benjamin Tuinei</h4>
+              <p>Founder & CEO</p>
             </div>
           </div>
 
-          <!-- Team Member 2 -->
-          <div style="background: var(--color-white); border-radius: var(--radius-xl); overflow: hidden; box-shadow: var(--shadow-md);">
-            <div style="aspect-ratio: 1; background: var(--color-alt-bg);">
-              <img src="../images/team/cto.jpg" alt="CTO" style="width: 100%; height: 100%; object-fit: cover;">
+          <div class="team-card">
+            <div class="team-card-image">
+              <img src="../images/team/alex-furer.png" alt="Alex Furer">
             </div>
-            <div style="padding: var(--space-6);">
-              <h4 style="margin-bottom: var(--space-1);">Leadership Name</h4>
-              <p style="color: var(--color-interactive); font-size: var(--text-sm); font-weight: var(--font-medium); margin-bottom: var(--space-3);">Chief Technology Officer</p>
-              <p style="font-size: var(--text-sm); color: var(--color-text-muted); margin: 0;">Former engineering leader at major healthcare SaaS companies.</p>
+            <div class="team-card-info">
+              <h4>Alex Furer</h4>
+              <p>Chief Technology Officer</p>
             </div>
           </div>
 
-          <!-- Team Member 3 -->
-          <div style="background: var(--color-white); border-radius: var(--radius-xl); overflow: hidden; box-shadow: var(--shadow-md);">
-            <div style="aspect-ratio: 1; background: var(--color-alt-bg);">
-              <img src="../images/team/coo.jpg" alt="COO" style="width: 100%; height: 100%; object-fit: cover;">
+          <div class="team-card">
+            <div class="team-card-image">
+              <img src="../images/team/sheldon.png" alt="Sheldon">
             </div>
-            <div style="padding: var(--space-6);">
-              <h4 style="margin-bottom: var(--space-1);">Leadership Name</h4>
-              <p style="color: var(--color-interactive); font-size: var(--text-sm); font-weight: var(--font-medium); margin-bottom: var(--space-3);">Chief Operating Officer</p>
-              <p style="font-size: var(--text-sm); color: var(--color-text-muted); margin: 0;">Deep expertise in dental operations and practice optimization.</p>
+            <div class="team-card-info">
+              <h4>Sheldon</h4>
+              <p>Chief Operating Officer</p>
+            </div>
+          </div>
+
+          <div class="team-card">
+            <div class="team-card-image">
+              <img src="../images/team/travis-rodgers.png" alt="Travis Rodgers">
+            </div>
+            <div class="team-card-info">
+              <h4>Travis Rodgers</h4>
+              <p>VP of Sales</p>
+            </div>
+          </div>
+
+          <div class="team-card">
+            <div class="team-card-image">
+              <img src="../images/team/seti.png" alt="Seti">
+            </div>
+            <div class="team-card-info">
+              <h4>Seti</h4>
+              <p>VP of Operations</p>
+            </div>
+          </div>
+
+          <div class="team-card">
+            <div class="team-card-image">
+              <img src="../images/team/richard-hoang.png" alt="Richard Hoang">
+            </div>
+            <div class="team-card-info">
+              <h4>Richard Hoang</h4>
+              <p>VP of Engineering</p>
+            </div>
+          </div>
+
+          <div class="team-card">
+            <div class="team-card-image">
+              <img src="../images/team/mike.webp" alt="Mike">
+            </div>
+            <div class="team-card-info">
+              <h4>Mike</h4>
+              <p>VP of Product</p>
+            </div>
+          </div>
+
+          <div class="team-card">
+            <div class="team-card-image">
+              <img src="../images/team/portrait-1.jpg" alt="Team Member">
+            </div>
+            <div class="team-card-info">
+              <h4>Sarah Chen</h4>
+              <p>VP of Marketing</p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Advisors -->
+    <!-- Advisors & Key Opinion Leaders -->
     <section class="section">
       <div class="container">
         <div class="section-header">
           <span class="overline">Advisors</span>
-          <h2>Strategic Guidance</h2>
-          <p>Industry experts providing strategic counsel and domain expertise.</p>
+          <h2>Key Opinion Leaders</h2>
+          <p>Industry experts providing strategic guidance and domain expertise.</p>
         </div>
 
-        <div class="grid grid-4" style="gap: var(--space-6);">
-          <div style="text-align: center;">
-            <div style="width: 100px; height: 100px; background: var(--color-alt-bg); border-radius: var(--radius-full); margin: 0 auto var(--space-4); overflow: hidden;">
-              <img src="../images/team/advisor-1.jpg" alt="Advisor" style="width: 100%; height: 100%; object-fit: cover;">
+        <div class="advisors-grid">
+          <div class="advisor-card">
+            <div class="advisor-card-image">
+              <img src="../images/team/dr-mark-whitfield.png" alt="Dr. Mark Whitfield">
             </div>
-            <h5 style="margin-bottom: var(--space-1);">Advisor Name</h5>
-            <p style="font-size: var(--text-sm); color: var(--color-text-muted); margin: 0;">Former DSO Executive</p>
+            <h4 style="color: var(--color-white); margin-bottom: var(--space-1);">Dr. Mark Whitfield</h4>
+            <p style="font-size: var(--text-sm); color: var(--color-interactive);">Clinical Advisor</p>
           </div>
 
-          <div style="text-align: center;">
-            <div style="width: 100px; height: 100px; background: var(--color-alt-bg); border-radius: var(--radius-full); margin: 0 auto var(--space-4); overflow: hidden;">
-              <img src="../images/team/advisor-2.jpg" alt="Advisor" style="width: 100%; height: 100%; object-fit: cover;">
+          <div class="advisor-card">
+            <div class="advisor-card-image">
+              <img src="../images/team/dr-siona-motufau.png" alt="Dr. Siona Motufau">
             </div>
-            <h5 style="margin-bottom: var(--space-1);">Advisor Name</h5>
-            <p style="font-size: var(--text-sm); color: var(--color-text-muted); margin: 0;">Healthcare Technology</p>
+            <h4 style="color: var(--color-white); margin-bottom: var(--space-1);">Dr. Siona Motufau</h4>
+            <p style="font-size: var(--text-sm); color: var(--color-interactive);">Practice Strategy</p>
           </div>
 
-          <div style="text-align: center;">
-            <div style="width: 100px; height: 100px; background: var(--color-alt-bg); border-radius: var(--radius-full); margin: 0 auto var(--space-4); overflow: hidden;">
-              <img src="../images/team/advisor-3.jpg" alt="Advisor" style="width: 100%; height: 100%; object-fit: cover;">
+          <div class="advisor-card">
+            <div class="advisor-card-image">
+              <img src="../images/team/dr-sonya-reddy.png" alt="Dr. Sonya Reddy">
             </div>
-            <h5 style="margin-bottom: var(--space-1);">Advisor Name</h5>
-            <p style="font-size: var(--text-sm); color: var(--color-text-muted); margin: 0;">Revenue Cycle Expert</p>
+            <h4 style="color: var(--color-white); margin-bottom: var(--space-1);">Dr. Sonya Reddy</h4>
+            <p style="font-size: var(--text-sm); color: var(--color-interactive);">Revenue Optimization</p>
           </div>
 
-          <div style="text-align: center;">
-            <div style="width: 100px; height: 100px; background: var(--color-alt-bg); border-radius: var(--radius-full); margin: 0 auto var(--space-4); overflow: hidden;">
-              <img src="../images/team/advisor-4.jpg" alt="Advisor" style="width: 100%; height: 100%; object-fit: cover;">
+          <div class="advisor-card">
+            <div class="advisor-card-image">
+              <img src="../images/team/dr-arrington.png" alt="Dr. Arrington">
             </div>
-            <h5 style="margin-bottom: var(--space-1);">Advisor Name</h5>
-            <p style="font-size: var(--text-sm); color: var(--color-text-muted); margin: 0;">AI/ML Specialist</p>
+            <h4 style="color: var(--color-white); margin-bottom: var(--space-1);">Dr. Arrington</h4>
+            <p style="font-size: var(--text-sm); color: var(--color-interactive);">DSO Operations</p>
+          </div>
+
+          <div class="advisor-card">
+            <div class="advisor-card-image">
+              <img src="../images/team/portrait-2.jpg" alt="Advisor">
+            </div>
+            <h4 style="color: var(--color-white); margin-bottom: var(--space-1);">Jennifer Walsh</h4>
+            <p style="font-size: var(--text-sm); color: var(--color-interactive);">Healthcare Tech</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Industry Presence -->
+    <!-- Photo Gallery - Industry Events -->
+    <section class="section bg-light">
+      <div class="container">
+        <div class="section-header">
+          <span class="overline">In the Community</span>
+          <h2>Industry Presence</h2>
+          <p>Active participants in the dental community through conferences, partnerships, and thought leadership.</p>
+        </div>
+
+        <div class="photo-gallery">
+          <div class="photo-gallery-item featured">
+            <img src="../images/events/kol-team-pbf.jpg" alt="EDF team at industry conference">
+          </div>
+          <div class="photo-gallery-item">
+            <img src="../images/events/dental-nachos.jpg" alt="Partnership with Dental Nachos">
+          </div>
+          <div class="photo-gallery-item">
+            <img src="../images/events/team-event-1.jpg" alt="Team at dental event">
+          </div>
+          <div class="photo-gallery-item">
+            <img src="../images/events/conference-1.jpg" alt="Conference presentation">
+          </div>
+          <div class="photo-gallery-item">
+            <img src="../images/events/team-event-2.jpg" alt="Team collaboration">
+          </div>
+          <div class="photo-gallery-item">
+            <img src="../images/events/conference-2.jpg" alt="Industry networking">
+          </div>
+          <div class="photo-gallery-item">
+            <img src="../images/events/team-event-3.jpg" alt="Team building">
+          </div>
+          <div class="photo-gallery-item">
+            <img src="../images/events/team-event-4.jpg" alt="Company event">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="overline">Ecosystem</span>
+          <h2>Our Partners</h2>
+          <p>Strategic partnerships that extend our capabilities and reach.</p>
+        </div>
+      </div>
+
+      <div class="partners-scroll">
+        <div class="partners-logos">
+          <img src="../images/partners/veritas-dental.png" alt="Veritas Dental Resources">
+          <img src="../images/partners/ohana-dental.png" alt="Ohana Dental">
+          <img src="../images/partners/emerald-beacon.png" alt="Emerald Beacon">
+          <img src="../images/partners/drdds.png" alt="DrDDS">
+          <img src="../images/partners/heydonto.png" alt="HeyDonto">
+          <img src="../images/partners/mulligan-funding.webp" alt="Mulligan Funding">
+          <img src="../images/partners/clear-forward.webp" alt="Clear Forward">
+          <!-- Duplicate for seamless scroll -->
+          <img src="../images/partners/veritas-dental.png" alt="Veritas Dental Resources">
+          <img src="../images/partners/ohana-dental.png" alt="Ohana Dental">
+          <img src="../images/partners/emerald-beacon.png" alt="Emerald Beacon">
+          <img src="../images/partners/drdds.png" alt="DrDDS">
+          <img src="../images/partners/heydonto.png" alt="HeyDonto">
+          <img src="../images/partners/mulligan-funding.webp" alt="Mulligan Funding">
+          <img src="../images/partners/clear-forward.webp" alt="Clear Forward">
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats Section -->
     <section class="section bg-alt">
       <div class="container">
-        <div class="section-header">
-          <span class="overline">Industry Engagement</span>
-          <h2>Active in the Community</h2>
-          <p>We're committed to advancing the dental industry through thought leadership and strategic partnerships.</p>
-        </div>
-
-        <div class="grid grid-3" style="gap: var(--space-8);">
-          <div style="background: var(--color-white); padding: var(--space-8); border-radius: var(--radius-xl); text-align: center;">
-            <div style="font-size: var(--text-4xl); font-weight: var(--font-bold); color: var(--color-interactive); margin-bottom: var(--space-2);">15+</div>
-            <p style="font-weight: var(--font-medium); margin-bottom: var(--space-2);">Industry Events</p>
-            <p style="font-size: var(--text-sm); color: var(--color-text-muted); margin: 0;">Speaking and exhibiting at major dental conferences</p>
+        <div class="metrics-grid">
+          <div class="metric-card">
+            <div class="metric-value">500+</div>
+            <div class="metric-label">Practices Served</div>
           </div>
-
-          <div style="background: var(--color-white); padding: var(--space-8); border-radius: var(--radius-xl); text-align: center;">
-            <div style="font-size: var(--text-4xl); font-weight: var(--font-bold); color: var(--color-interactive); margin-bottom: var(--space-2);">50+</div>
-            <p style="font-weight: var(--font-medium); margin-bottom: var(--space-2);">Podcast Episodes</p>
-            <p style="font-size: var(--text-sm); color: var(--color-text-muted); margin: 0;">Sharing insights through our Revenue Intelligence podcast</p>
+          <div class="metric-card">
+            <div class="metric-value">15+</div>
+            <div class="metric-label">Industry Events</div>
           </div>
-
-          <div style="background: var(--color-white); padding: var(--space-8); border-radius: var(--radius-xl); text-align: center;">
-            <div style="font-size: var(--text-4xl); font-weight: var(--font-bold); color: var(--color-interactive); margin-bottom: var(--space-2);">20+</div>
-            <p style="font-weight: var(--font-medium); margin-bottom: var(--space-2);">Partner Organizations</p>
-            <p style="font-size: var(--text-sm); color: var(--color-text-muted); margin: 0;">Strategic ecosystem partnerships</p>
+          <div class="metric-card">
+            <div class="metric-value">50+</div>
+            <div class="metric-label">Podcast Episodes</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-value">20+</div>
+            <div class="metric-label">Strategic Partners</div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Security & Compliance -->
-    <section class="section" id="security">
+    <!-- DSO Network Visual -->
+    <section class="section">
       <div class="container">
         <div class="section-header">
-          <span class="overline">Security</span>
-          <h2>Security & Compliance</h2>
-          <p>Protecting your practice and patient data is our highest priority.</p>
+          <span class="overline">Network</span>
+          <h2>Who We Serve</h2>
+          <p>From single-location practices to enterprise DSOs across the nation.</p>
         </div>
 
-        <div class="split-section">
-          <div class="split-content">
-            <h3>HIPAA-Aligned Architecture</h3>
-            <p>Elite Dental Force maintains rigorous security practices aligned with HIPAA requirements for protected health information.</p>
-            <ul style="margin: var(--space-6) 0;">
-              <li style="display: flex; align-items: center; gap: var(--space-3); padding: var(--space-3) 0; color: var(--color-text-light);">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4ba8f0" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-                End-to-end encryption (AES-256)
-              </li>
-              <li style="display: flex; align-items: center; gap: var(--space-3); padding: var(--space-3) 0; color: var(--color-text-light);">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4ba8f0" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-                SOC 2 Type II certified
-              </li>
-              <li style="display: flex; align-items: center; gap: var(--space-3); padding: var(--space-3) 0; color: var(--color-text-light);">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4ba8f0" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-                Role-based access controls
-              </li>
-              <li style="display: flex; align-items: center; gap: var(--space-3); padding: var(--space-3) 0; color: var(--color-text-light);">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4ba8f0" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-                Complete audit logging
-              </li>
-              <li style="display: flex; align-items: center; gap: var(--space-3); padding: var(--space-3) 0; color: var(--color-text-light);">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4ba8f0" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-                Regular third-party penetration testing
-              </li>
-              <li style="display: flex; align-items: center; gap: var(--space-3); padding: var(--space-3) 0; color: var(--color-text-light);">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4ba8f0" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-                Business Associate Agreements available
-              </li>
-            </ul>
-          </div>
-          <div class="split-visual">
-            <div class="product-visual">
-              <img src="../images/security-certifications.png" alt="Security certifications and compliance badges">
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section class="section bg-light" id="faq">
-      <div class="container">
-        <div class="section-header">
-          <span class="overline">FAQ</span>
-          <h2>Frequently Asked Questions</h2>
-          <p>Answers to common questions about Elite Dental Force.</p>
-        </div>
-
-        <div class="faq-list">
-          <div class="faq-item">
-            <button class="faq-question">
-              What is Elite Dental Force?
-              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <line x1="12" y1="5" x2="12" y2="19"></line>
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-              </svg>
-            </button>
-            <div class="faq-answer">
-              <div class="faq-answer-inner">
-                Elite Dental Force is a dental revenue intelligence platform that combines AI-powered consultants with the EDiFi software platform to help practices optimize eligibility verification, reduce claim denials, and improve overall revenue performance.
-              </div>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              How is data protected?
-              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <line x1="12" y1="5" x2="12" y2="19"></line>
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-              </svg>
-            </button>
-            <div class="faq-answer">
-              <div class="faq-answer-inner">
-                We maintain HIPAA-aligned security practices including end-to-end encryption, SOC 2 Type II certification, role-based access controls, and comprehensive audit logging. All data is encrypted both in transit and at rest.
-              </div>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              What practice sizes do you support?
-              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <line x1="12" y1="5" x2="12" y2="19"></line>
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-              </svg>
-            </button>
-            <div class="faq-answer">
-              <div class="faq-answer-inner">
-                Elite Dental Force serves practices of all sizes, from single-location private practices to multi-state DSOs with hundreds of locations. Our platform scales to meet the needs of any organization.
-              </div>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              What integrations are available?
-              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <line x1="12" y1="5" x2="12" y2="19"></line>
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-              </svg>
-            </button>
-            <div class="faq-answer">
-              <div class="faq-answer-inner">
-                EDiFi integrates with leading practice management systems including Dentrix, Eaglesoft, Open Dental, Curve, Denticon, and many others. We also connect directly with major clearinghouses and payers.
-              </div>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              How do I get started?
-              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <line x1="12" y1="5" x2="12" y2="19"></line>
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-              </svg>
-            </button>
-            <div class="faq-answer">
-              <div class="faq-answer-inner">
-                The best way to get started is to book a demo with our team. We'll walk you through the platform, understand your specific needs, and recommend the best engagement path for your practice.
-              </div>
-            </div>
-          </div>
+        <div style="text-align: center;">
+          <img src="../images/about/dso-network.png" alt="DSO Network Map" style="max-width: 100%; border-radius: var(--radius-xl);">
         </div>
       </div>
     </section>
@@ -368,10 +733,10 @@
     <!-- CTA Band -->
     <section class="cta-band">
       <div class="container">
-        <h2>Ready to Learn More?</h2>
-        <p>Get in touch to discuss how Elite Dental Force can transform your practice.</p>
+        <h2>Ready to Join the Elite Dental Force Family?</h2>
+        <p>Discover how we can transform your practice's revenue operations.</p>
         <div class="cta-band-actions">
-          <a href="contact.html#demo" class="btn btn-white btn-lg">Book a Demo</a>
+          <a href="contact.html#demo" class="btn btn-primary btn-lg">Book a Demo</a>
           <a href="contact.html" class="btn btn-secondary btn-lg" style="border-color: white; color: white;">Contact Us</a>
         </div>
       </div>
@@ -384,8 +749,7 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <a href="../index.html" class="logo">
-            <img src="../images/Original Logo Symbol.png" alt="Elite Dental Force" width="56" height="56">
-            <span style="color: white;">Elite Dental Force</span>
+            <img src="../images/Grayscale Transparent.png" alt="Elite Dental Force">
           </a>
           <p>The infrastructure leader in dental revenue intelligence.</p>
         </div>
