@@ -420,8 +420,9 @@ p {
 }
 
 .logo img {
-  height: 88px;
+  height: 120px;
   width: auto;
+  filter: brightness(0) invert(1);
 }
 
 .nav {
