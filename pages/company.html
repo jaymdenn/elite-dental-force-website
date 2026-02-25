@@ -61,26 +61,29 @@
 
     .team-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: var(--space-6);
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-8);
     }
 
     .team-card {
-      background: var(--color-card-bg);
-      border: 1px solid var(--color-card-border);
+      background: #e8eef4;
       border-radius: var(--radius-xl);
       overflow: hidden;
       transition: all var(--transition-base);
+      padding: var(--space-6);
     }
 
     .team-card:hover {
       transform: translateY(-4px);
-      box-shadow: var(--shadow-glow);
+      box-shadow: var(--shadow-xl);
     }
 
     .team-card-image {
       aspect-ratio: 1;
       overflow: hidden;
+      border-radius: var(--radius-lg);
+      border: 4px solid rgba(0, 31, 113, 0.1);
+      margin-bottom: var(--space-4);
     }
 
     .team-card-image img {
@@ -95,20 +98,28 @@
     }
 
     .team-card-info {
-      padding: var(--space-4);
       text-align: center;
     }
 
     .team-card-info h4 {
-      font-size: var(--text-base);
-      margin-bottom: var(--space-1);
-      color: var(--color-white);
+      font-size: var(--text-xl);
+      margin-bottom: var(--space-2);
+      color: var(--color-brand);
     }
 
-    .team-card-info p {
+    .team-card-info .team-title {
+      font-size: var(--text-base);
+      font-style: italic;
+      font-weight: var(--font-semibold);
+      color: var(--color-brand);
+      margin-bottom: var(--space-3);
+    }
+
+    .team-card-info .team-bio {
       font-size: var(--text-sm);
-      color: var(--color-interactive);
+      color: #4a5568;
       margin: 0;
+      line-height: 1.6;
     }
 
     .advisors-grid {
@@ -486,15 +497,15 @@
           <p>Experienced leaders driving innovation in dental revenue technology.</p>
         </div>
 
-        <div class="team-grid" style="grid-template-columns: repeat(3, 1fr);">
+        <div class="team-grid">
           <div class="team-card">
             <div class="team-card-image">
               <img src="../images/team/alvin-utai.png" alt="Alvin T. Uta'i">
             </div>
             <div class="team-card-info">
               <h4>Alvin T. Uta'i</h4>
-              <p style="font-style: italic; margin-bottom: var(--space-2);">Founder & CEO</p>
-              <p style="font-size: var(--text-xs); color: var(--color-text-muted); margin: 0;">Expert in AI-driven dental billing transformation, specializing in clean-claim automation, denial prevention, and scalable workflows.</p>
+              <p class="team-title">Founder & CEO</p>
+              <p class="team-bio">Expert in AI-driven dental billing transformation, specializing in clean-claim automation, denial prevention, and scalable workflows.</p>
             </div>
           </div>
 
@@ -504,8 +515,8 @@
             </div>
             <div class="team-card-info">
               <h4>Alex Furer</h4>
-              <p style="font-style: italic; margin-bottom: var(--space-2);">Chief Technology Officer</p>
-              <p style="font-size: var(--text-xs); color: var(--color-text-muted); margin: 0;">30+ year expert in system connectivity, improving data exchange and automation for dental practices with interoperable technology.</p>
+              <p class="team-title">Chief Technology Officer</p>
+              <p class="team-bio">30+ year expert in system connectivity, improving data exchange and automation for dental practices with interoperable technology.</p>
             </div>
           </div>
 
@@ -515,8 +526,8 @@
             </div>
             <div class="team-card-info">
               <h4>Seti Matua</h4>
-              <p style="font-style: italic; margin-bottom: var(--space-2);">Chief Operating Officer</p>
-              <p style="font-size: var(--text-xs); color: var(--color-text-muted); margin: 0;">Executing product delivery with precision, aligning development and operations to ensure clients experience efficient, clean-claim workflows.</p>
+              <p class="team-title">Chief Operating Officer</p>
+              <p class="team-bio">Executing product delivery with precision, aligning development and operations to ensure clients experience efficient, clean-claim workflows.</p>
             </div>
           </div>
         </div>
