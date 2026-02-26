@@ -1174,6 +1174,12 @@ p {
   font-size: var(--text-lg);
   font-weight: var(--font-semibold);
   color: var(--color-text);
+  margin-bottom: var(--space-1);
+}
+
+.pricing-card-subtitle {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
   margin-bottom: var(--space-2);
 }
 
