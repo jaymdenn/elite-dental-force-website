@@ -956,7 +956,6 @@ p {
 
 .split-visual img {
   border-radius: var(--radius-xl);
-  box-shadow: var(--shadow-lg);
 }
 
 /* ============================================
@@ -966,9 +965,6 @@ p {
   position: relative;
   border-radius: var(--radius-xl);
   overflow: hidden;
-  box-shadow: var(--shadow-float), var(--shadow-glow);
-  border: 1px solid var(--color-card-border);
-  background: var(--color-card-bg);
 }
 
 .product-visual img {
@@ -979,7 +975,6 @@ p {
   padding: var(--space-4) var(--space-6);
   background: rgba(10, 22, 40, 0.8);
   backdrop-filter: blur(10px);
-  border-top: 1px solid var(--color-card-border);
   font-size: var(--text-sm);
   color: var(--color-text-light);
 }
