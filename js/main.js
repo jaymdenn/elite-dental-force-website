@@ -385,8 +385,18 @@ function initGlassRippleAnimation() {
   const canvas = document.getElementById('glassRippleCanvas');
   if (!canvas) return;
 
+  // Skip the heavy canvas animation on phones/tablets and for users
+  // who prefer reduced motion — it drains battery and causes scroll jank
+  const isSmallScreen = window.matchMedia('(max-width: 1024px)').matches;
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (isSmallScreen || prefersReducedMotion) {
+    canvas.style.display = 'none';
+    return;
+  }
+
   const ctx = canvas.getContext('2d');
   let animationId;
+  let heroVisible = true;
   let nodes = [];
   let ripples = [];
   let mouseX = -1000;
@@ -649,6 +659,13 @@ function initGlassRippleAnimation() {
     const hero = canvas.closest('.hero');
     if (!hero) return;
 
+    // Stop the loop entirely while the hero is scrolled out of view;
+    // the IntersectionObserver below restarts it when visible again
+    if (!heroVisible) {
+      animationId = null;
+      return;
+    }
+
     const rect = hero.getBoundingClientRect();
     const width = rect.width;
     const height = rect.height;
@@ -683,6 +700,19 @@ function initGlassRippleAnimation() {
 
   // Handle resize
   window.addEventListener('resize', debounce(resizeCanvas, 150));
+
+  // Pause the animation when the hero scrolls out of view
+  const heroEl = canvas.closest('.hero');
+  if (heroEl && 'IntersectionObserver' in window) {
+    new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        heroVisible = entry.isIntersecting;
+        if (heroVisible && !animationId) {
+          animationId = requestAnimationFrame(animate);
+        }
+      });
+    }, { threshold: 0 }).observe(heroEl);
+  }
 
   // Initialize
   resizeCanvas();

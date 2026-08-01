@@ -62,7 +62,7 @@
     />
 
     <!-- Styles -->
-    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/styles.v2.css" />
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="images/favicon.png" />
@@ -927,6 +927,7 @@
       >
         <div class="container">
           <div
+            class="elig-card"
             style="
               max-width: 900px;
               margin: 0 auto;
@@ -1095,6 +1096,13 @@
             #elig-standalone-heading {
               font-size: 1.4rem !important;
             }
+            .elig-card {
+              grid-template-columns: 1fr !important;
+              gap: 24px !important;
+            }
+            .elig-card > div[aria-hidden='true'] {
+              display: none;
+            }
           }
         </style>
       </section>
@@ -1102,7 +1110,7 @@
       <!-- EDiFi Enterprise Platform -->
       <section class="section">
         <div class="container">
-          <div class="section-header" data-animate>
+          <div class="section-header section-header--left" data-animate>
             <span class="overline">EDiFi Enterprise</span>
             <h2>One Platform. Every Revenue Workflow.</h2>
             <p>

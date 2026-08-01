@@ -31,8 +31,8 @@
 
   --shadow-card: 0 4px 32px rgba(0,0,0,0.4), 0 1px 0 rgba(255,255,255,0.06) inset;
   --shadow-card-hover: 0 16px 50px rgba(0,0,0,0.55), 0 0 0 1px rgba(75,168,240,0.2), 0 1px 0 rgba(255,255,255,0.1) inset;
-  --shadow-btn: 0 4px 20px rgba(75,168,240,0.45);
-  --shadow-btn-hover: 0 8px 35px rgba(75,168,240,0.65);
+  --shadow-btn: 0 2px 12px rgba(75,168,240,0.28);
+  --shadow-btn-hover: 0 8px 28px rgba(75,168,240,0.42);
   --shadow-glow: 0 0 80px rgba(75,168,240,0.18);
 
   --grad-brand: linear-gradient(135deg, #62bcff 0%, #1a7fd4 100%);
@@ -164,6 +164,7 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.15;
   color: var(--white);
   letter-spacing: -0.02em;
+  text-wrap: balance;
 }
 
 h1 { font-size: clamp(var(--fs-4xl), 6vw, var(--fs-7xl)); }
@@ -173,8 +174,15 @@ h4 { font-size: var(--fs-2xl); }
 h5 { font-size: var(--fs-xl); }
 h6 { font-size: var(--fs-lg); }
 
-p { margin-bottom: var(--s4); color: var(--text-secondary); }
+p { margin-bottom: var(--s4); color: var(--text-secondary); text-wrap: pretty; }
 p:last-child { margin-bottom: 0; }
+
+/* Keyboard focus ring */
+:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 3px;
+  border-radius: var(--r-sm);
+}
 
 .lead {
   font-size: var(--fs-xl);
@@ -206,8 +214,8 @@ p:last-child { margin-bottom: 0; }
 .overline {
   display: inline-flex; align-items: center; gap: var(--s2);
   font-size: var(--fs-xs); font-weight: 700;
-  letter-spacing: 0.1em; text-transform: uppercase;
-  color: var(--gold); margin-bottom: var(--s4);
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--blue); margin-bottom: var(--s4);
 }
 
 /* ================================================
@@ -220,7 +228,7 @@ p:last-child { margin-bottom: 0; }
 .container-narrow { max-width: var(--max-w-narrow); margin: 0 auto; }
 
 .section {
-  padding: var(--s24) 0;
+  padding: var(--s20) 0;
   position: relative; z-index: 1;
 }
 .section-sm { padding: var(--s16) 0; }
@@ -233,6 +241,12 @@ p:last-child { margin-bottom: 0; }
 }
 .section-header h2 { margin-bottom: var(--s5); }
 .section-header > p { font-size: var(--fs-lg); margin: 0; }
+.section-header--left {
+  text-align: left;
+  max-width: 640px;
+  margin-left: 0;
+  margin-right: auto;
+}
 
 .bg-light { background: rgba(255,255,255,0.012); }
 .bg-alt { background: rgba(4,22,80,0.22); }
@@ -300,7 +314,8 @@ p:last-child { margin-bottom: 0; }
   box-shadow: var(--shadow-btn-hover);
   background: linear-gradient(135deg, #75caff 0%, #1a7fd4 100%);
 }
-.btn-primary:active { transform: translateY(0); }
+.btn-primary:active { transform: translateY(0) scale(0.97); }
+.btn-secondary:active, .btn-gold:active { transform: scale(0.97); }
 
 .btn-secondary {
   background: transparent;
@@ -965,11 +980,13 @@ p:last-child { margin-bottom: 0; }
 }
 .platform-badge {
   display: inline-block;
-  font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
-  padding: 4px 10px;
-  border-radius: var(--r-full);
-  background: rgba(75,168,240,0.12);
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 5px 10px;
+  border-radius: var(--r-sm);
+  background: rgba(75,168,240,0.08);
   border: 1px solid rgba(75,168,240,0.25);
+  border-left-width: 3px;
   color: var(--blue);
 }
 .platform-badge--gold {
@@ -1042,8 +1059,14 @@ p:last-child { margin-bottom: 0; }
    ================================================ */
 .enterprise-modules-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--s6);
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--s8);
+}
+/* Editorial stagger on desktop — breaks the uniform card-grid look */
+@media (min-width: 1025px) {
+  .enterprise-modules-grid > :nth-child(even) {
+    margin-top: var(--s16);
+  }
 }
 .enterprise-module-card::before {
   background: linear-gradient(90deg, transparent, rgba(75,168,240,0.5), transparent);
@@ -1520,11 +1543,14 @@ body.menu-open { overflow: hidden; }
 
   /* Hero */
   .hero-split { grid-template-columns: 1fr; gap: var(--s10); }
-  .hero-visual { order: -1; }
+  .hero-visual { width: 100%; max-width: 480px; margin: 0 auto; }
   .hero-content h1 { text-align: center; }
   .hero-content .lead { text-align: center; margin: 0 auto var(--s8); max-width: none; }
   .hero-actions { justify-content: center; }
   .hero-proof { justify-content: center; }
+  .hero-badge { margin-left: auto; margin-right: auto; }
+  .hero-content { text-align: center; }
+  .terminal-label { justify-content: center; }
 
   /* Grids */
   .grid-4 { grid-template-columns: repeat(2, 1fr); }
@@ -1727,6 +1753,29 @@ body.menu-open { overflow: hidden; }
   .testimonial-card { padding: var(--s5); }
 }
 
+/* ================================================================
+   MOBILE / TABLET PERFORMANCE (≤1024px)
+   backdrop-filter blur and animated blur orbs are the top scroll-jank
+   and battery-drain sources on phones — trade them for solid fills.
+   ================================================================ */
+@media (max-width: 1024px) {
+  *, *::before, *::after {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  /* Fixed header loses its blur → give it a near-solid fill */
+  .header.scrolled { background: rgba(3,11,26,0.97); }
+
+  /* Hero orbs: stop the infinite drift animation, drop the subtlest two */
+  .hero-orb { animation: none; }
+  .hero-orb--3, .hero-orb--4 { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-orb { animation: none; }
+}
+
 /* ── Small Mobile (≤360px) ── */
 @media (max-width: 360px) {
   .logo img { height: 38px; }
@@ -1912,7 +1961,7 @@ body.menu-open { overflow: hidden; }
 }
 .pia-content h2 em {
   font-style: normal;
-  background: linear-gradient(90deg, #4ba8f0, #ffd700);
+  background: linear-gradient(90deg, #62bcff, #4ba8f0);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -1926,7 +1975,7 @@ body.menu-open { overflow: hidden; }
 }
 .pia-cards {
   position: relative;
-  height: 530px;
+  height: 480px;
 }
 .pia-card {
   position: absolute;
@@ -1959,27 +2008,27 @@ body.menu-open { overflow: hidden; }
   vertical-align: middle;
 }
 .pia-c1 {
-  top: 0;
-  left: 0;
-  width: 205px;
+  top: 12px;
+  left: 24px;
+  width: 215px;
   z-index: 2;
 }
 .pia-c2 {
-  top: 88px;
-  left: 20px;
-  width: 298px;
+  top: 135px;
+  left: 80px;
+  width: 270px;
   z-index: 3;
 }
 .pia-c3 {
-  top: 0;
-  right: 0;
+  top: 20px;
+  right: 24px;
   width: 215px;
   z-index: 2;
   text-align: center;
 }
 .pia-c4 {
-  bottom: 10px;
-  right: 5px;
+  bottom: 24px;
+  right: 60px;
   width: 215px;
   z-index: 4;
   display: flex;
