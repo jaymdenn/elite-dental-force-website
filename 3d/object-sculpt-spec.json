@@ -1,0 +1,3710 @@
+{
+  "targetName": "EDF Molecular Wreath Emblem",
+  "targetId": "edf-molecular-wreath-emblem",
+  "schemaVersion": "2.1",
+  "terminologyProfile": {
+    "domain": "real-time procedural Three.js asset",
+    "geometryTerms": [
+      "silhouette",
+      "topology",
+      "primitive",
+      "bevel",
+      "chamfer",
+      "taper",
+      "bend",
+      "boolean cut",
+      "edge loop",
+      "surface normal",
+      "displacement"
+    ],
+    "materialTerms": [
+      "albedo",
+      "baseColor",
+      "roughness",
+      "metalness",
+      "normal map",
+      "bump map",
+      "ambient occlusion",
+      "cavity dirt",
+      "edge wear",
+      "clearcoat"
+    ],
+    "lightingTerms": [
+      "key light",
+      "fill light",
+      "rim light",
+      "HDRI/environment reflection",
+      "contact shadow"
+    ],
+    "descriptionRule": "Use measurable 3D graphics terms. Avoid vague words unless they are paired with concrete geometry/material/shader parameters."
+  },
+  "sourceImage": "C:\\Users\\elite\\elite-dental-force-website\\images\\edf-icon-logo.png",
+  "referenceCamera": {
+    "solved": false,
+    "fovDegrees": 32.0,
+    "aspect": 1.0,
+    "orientation": {
+      "yaw": 0.0,
+      "pitch": 0.0,
+      "roll": 0.0
+    },
+    "positionHint": [
+      0.0,
+      0.0,
+      3.4
+    ],
+    "note": "Front-on framing matching the flat reference; wreath plane faces camera."
+  },
+  "suitability": "conditional",
+  "scores": {
+    "object_isolation": 3,
+    "silhouette_readability": 3,
+    "depth_inference": 2,
+    "primitive_decomposition": 3,
+    "material_procedurality": 3,
+    "occlusion_risk": 3,
+    "interaction_fit": 3
+  },
+  "preSpecAssessment": {
+    "objectClass": {
+      "primaryType": "logo emblem badge (radial wreath of capsule/dumbbell/dot nodes)",
+      "primaryDomain": "object",
+      "formLanguage": [
+        "geometric",
+        "rounded",
+        "monoline",
+        "radial-pinwheel"
+      ],
+      "structureKind": [
+        "coplanar element cluster",
+        "extruded flat artwork (declared stylization)"
+      ],
+      "motionPotential": [
+        "spin about wreath axis",
+        "per-element explode",
+        "hover bob"
+      ],
+      "materialFamilies": [
+        "gloss enamel dielectric (blues)",
+        "near-white enamel rim",
+        "matte dark plate"
+      ],
+      "notes": "Flat 2D brand mark rebuilt as extruded badge; geometry measured by deterministic blob extraction (shapes.json, 20 elements), verified visually (debug.png)."
+    },
+    "complexity": {
+      "tier": "moderate",
+      "scores": {
+        "silhouetteComplexity": 3,
+        "componentCount": 3,
+        "hierarchyDepth": 2,
+        "repetitionDensity": 3,
+        "materialLayerCount": 2,
+        "localDetailDensity": 2,
+        "occlusionRisk": 0,
+        "actionReadinessNeed": 2
+      },
+      "estimatedCounts": {
+        "macroComponents": 2,
+        "mesoComponents": 20,
+        "microFeatureGroups": 2,
+        "materialLayers": 3,
+        "repetitionSystems": 1
+      },
+      "reasoning": [
+        "20 measured elements (10 capsules, 2 dumbbells, 8 dots) in one repetition system with per-instance position/angle/length/color; two macro parts (wreath, plate); no occlusion (flat art); moderate tier is correct."
+      ]
+    },
+    "specDepthDecision": {
+      "requiredDepth": "moderate",
+      "minimumComponentLevels": [
+        "macro",
+        "meso"
+      ],
+      "needsRepetitionSystems": true,
+      "needsMaterialLocalOverrides": true,
+      "needsMultipleReviewViews": true,
+      "needsActionReadyHierarchy": true,
+      "rationale": "Element arrangement is the identity: encode as a repetition system driven by measured per-instance data; per-element albedo requires local overrides (NW->SE gradient)."
+    },
+    "unknownsToResolveBeforeImplementation": [],
+    "detailInventory": {
+      "scanMethod": "grid-3x3 + deterministic blob extraction",
+      "targetMinDetails": 6,
+      "note": "Enumerate every identity-defining small detail before authoring the spec. Each detail must map to a component.localFeatures entry or material.localOverrides entry, never prose only. Use forge/stage1_intake/build_detail_inventory.py to scan zones.",
+      "details": [
+        {
+          "id": "det-dumbbell-top",
+          "kind": "contour",
+          "description": "Vertical dumbbell (dot-bar-dot molecular bond) upper-center; bar width ~0.5x dot diameter.",
+          "region": {
+            "x": 0.37,
+            "y": 0.02,
+            "width": 0.26,
+            "height": 0.3,
+            "units": "normalized"
+          },
+          "scale": "meso",
+          "affects": "geometry",
+          "mapsTo": {
+            "type": "component.localFeatures",
+            "ref": "arch-dumbbell"
+          },
+          "evidenceRef": "C:\\Users\\elite\\AppData\\Local\\Temp\\claude\\C--Users-elite\\67a58887-ee1b-4d1d-bfff-0d10eb098305\\scratchpad\\edf-logo-3d\\di-crops\\zone-r0c1.png",
+          "confidence": 0.92,
+          "realization": "unreported"
+        },
+        {
+          "id": "det-dumbbell-bottom",
+          "kind": "contour",
+          "description": "Second vertical dumbbell lower-center, mirrored placement.",
+          "region": {
+            "x": 0.37,
+            "y": 0.68,
+            "width": 0.26,
+            "height": 0.3,
+            "units": "normalized"
+          },
+          "scale": "meso",
+          "affects": "geometry",
+          "mapsTo": {
+            "type": "component.localFeatures",
+            "ref": "arch-dumbbell"
+          },
+          "evidenceRef": "C:\\Users\\elite\\AppData\\Local\\Temp\\claude\\C--Users-elite\\67a58887-ee1b-4d1d-bfff-0d10eb098305\\scratchpad\\edf-logo-3d\\di-crops\\zone-r2c1.png",
+          "confidence": 0.92,
+          "realization": "unreported"
+        },
+        {
+          "id": "det-white-rim",
+          "kind": "linework",
+          "description": "Uniform near-white (#f8fbff) rim stroke on every element, ~0.14x element width.",
+          "region": {
+            "x": 0.0,
+            "y": 0.0,
+            "width": 1.0,
+            "height": 1.0,
+            "units": "normalized"
+          },
+          "scale": "micro",
+          "affects": "geometry+material",
+          "mapsTo": {
+            "type": "component.localFeatures",
+            "ref": "rim-shells/lf-rim-uniform"
+          },
+          "evidenceRef": "C:\\Users\\elite\\AppData\\Local\\Temp\\claude\\C--Users-elite\\67a58887-ee1b-4d1d-bfff-0d10eb098305\\scratchpad\\edf-logo-3d\\di-crops\\zone-r1c1.png",
+          "confidence": 0.95,
+          "realization": "unreported"
+        },
+        {
+          "id": "det-gradient-nw-se",
+          "kind": "decal",
+          "description": "Per-element albedo runs light sky blue (NW, ~#5fb7f2) to deep indigo (SE, ~#2c3fd6); measured per element in shapes.json fillHex.",
+          "region": {
+            "x": 0.0,
+            "y": 0.0,
+            "width": 1.0,
+            "height": 1.0,
+            "units": "normalized"
+          },
+          "scale": "macro",
+          "affects": "material",
+          "mapsTo": {
+            "type": "material.localOverrides",
+            "ref": "mat-enamel"
+          },
+          "evidenceRef": "C:\\Users\\elite\\AppData\\Local\\Temp\\claude\\C--Users-elite\\67a58887-ee1b-4d1d-bfff-0d10eb098305\\scratchpad\\edf-logo-3d\\shapes.json",
+          "confidence": 0.9,
+          "realization": "unreported"
+        },
+        {
+          "id": "det-star-void",
+          "kind": "hole",
+          "description": "Central star-shaped void; no element interior crosses r < 0.30 of wreath radius.",
+          "region": {
+            "x": 0.33,
+            "y": 0.33,
+            "width": 0.34,
+            "height": 0.34,
+            "units": "normalized"
+          },
+          "scale": "macro",
+          "affects": "placement",
+          "mapsTo": {
+            "type": "component.localFeatures",
+            "ref": "wreath/lf-star-void"
+          },
+          "evidenceRef": "C:\\Users\\elite\\AppData\\Local\\Temp\\claude\\C--Users-elite\\67a58887-ee1b-4d1d-bfff-0d10eb098305\\scratchpad\\edf-logo-3d\\di-crops\\zone-r1c1.png",
+          "confidence": 0.88,
+          "realization": "unreported"
+        },
+        {
+          "id": "det-arrangement",
+          "kind": "contour",
+          "description": "Exactly 20 elements (10/2/8 capsule/dumbbell/dot) at measured centers/angles/lengths â€” irregular pinwheel, NOT n-fold symmetric.",
+          "region": {
+            "x": 0.0,
+            "y": 0.0,
+            "width": 1.0,
+            "height": 1.0,
+            "units": "normalized"
+          },
+          "scale": "macro",
+          "affects": "geometry",
+          "mapsTo": {
+            "type": "component.localFeatures",
+            "ref": "wreath"
+          },
+          "evidenceRef": "C:\\Users\\elite\\AppData\\Local\\Temp\\claude\\C--Users-elite\\67a58887-ee1b-4d1d-bfff-0d10eb098305\\scratchpad\\edf-logo-3d\\shapes.json",
+          "confidence": 0.95,
+          "realization": "unreported"
+        },
+        {
+          "id": "det-length-variance",
+          "kind": "contour",
+          "description": "Capsule lengths vary ~3x (norm 0.18-0.55); longest bars sit at cardinal-adjacent positions.",
+          "region": {
+            "x": 0.0,
+            "y": 0.0,
+            "width": 1.0,
+            "height": 1.0,
+            "units": "normalized"
+          },
+          "scale": "meso",
+          "affects": "geometry",
+          "mapsTo": {
+            "type": "component.localFeatures",
+            "ref": "arch-capsule"
+          },
+          "evidenceRef": "C:\\Users\\elite\\AppData\\Local\\Temp\\claude\\C--Users-elite\\67a58887-ee1b-4d1d-bfff-0d10eb098305\\scratchpad\\edf-logo-3d\\shapes.json",
+          "confidence": 0.9,
+          "realization": "unreported"
+        },
+        {
+          "id": "det-enamel-gloss",
+          "kind": "gloss",
+          "description": "Declared stylization: gloss enamel + clearcoat on all wreath elements (premium badge read).",
+          "region": {
+            "x": 0.0,
+            "y": 0.0,
+            "width": 1.0,
+            "height": 1.0,
+            "units": "normalized"
+          },
+          "scale": "micro",
+          "affects": "material",
+          "mapsTo": {
+            "type": "material.localOverrides",
+            "ref": "mat-enamel"
+          },
+          "evidenceRef": "C:\\Users\\elite\\AppData\\Local\\Temp\\claude\\C--Users-elite\\67a58887-ee1b-4d1d-bfff-0d10eb098305\\scratchpad\\edf-logo-3d\\crop-enamel.png",
+          "confidence": 0.6,
+          "realization": "unreported"
+        }
+      ]
+    },
+    "anatomy": {
+      "applies": false,
+      "styleHeads": 0.0,
+      "proportions": {
+        "headUnit": 0.0,
+        "torso": 0.0,
+        "legs": 0.0,
+        "shoulderWidth": 0.0,
+        "hipWidth": 0.0
+      },
+      "pose": {
+        "type": "unassessed",
+        "jointAngles": {}
+      },
+      "faceLandmarks": {
+        "eyeLine": 0.0,
+        "eyeSpacing": 0.0,
+        "noseBase": 0.0,
+        "mouthLine": 0.0,
+        "hairline": 0.0
+      },
+      "features": [],
+      "confidence": 0.0,
+      "note": "Only meaningful when objectClass.primaryDomain is character or hybrid. Set applies=true and fill from forge/stage1_intake/extract_landmarks.py. See grimoire/character/reconstruction.md and grimoire/character/likeness_maximization.md."
+    },
+    "sourceImage": "C:\\Users\\elite\\elite-dental-force-website\\images\\edf-icon-logo.png"
+  },
+  "qualityContract": {
+    "qualityBar": "moderate",
+    "definitionOfDone": [
+      "The rendered model matches the reference silhouette, primary proportions, visible component hierarchy, material response, and most recognizable local features for the selected fidelity tier."
+    ],
+    "minimumSpecDepth": {
+      "macroComponents": 2,
+      "mesoComponents": 3,
+      "microFeatureGroups": 2,
+      "materialLayers": 2,
+      "repetitionSystems": 0,
+      "reviewViewpoints": 3
+    },
+    "featureGroups": [
+      {
+        "id": "overall-silhouette",
+        "name": "Overall silhouette and proportions",
+        "required": true,
+        "qualityCriteria": [
+          "Bounding shape, dominant curves, negative spaces, and scale relationships are explicitly described."
+        ],
+        "evidenceRefs": [
+          "full-object"
+        ],
+        "failureModes": [
+          "model reads as a generic placeholder instead of the reference object",
+          "major proportions are guessed without evidence"
+        ]
+      },
+      {
+        "id": "primary-structure",
+        "name": "Primary structure and hierarchy",
+        "required": true,
+        "qualityCriteria": [
+          "Major parts, joints, seams, contact points, and parent-child relationships are named before code generation."
+        ],
+        "evidenceRefs": [
+          "full-object"
+        ],
+        "failureModes": [
+          "large visible parts are merged into one mesh",
+          "component hierarchy is too shallow for the observed complexity"
+        ]
+      },
+      {
+        "id": "attachment-joint-correctness",
+        "name": "Attachment and joint correctness",
+        "required": true,
+        "qualityCriteria": [
+          "Every visible child appendage, branch, limb, handle, connector, tube, cable, horn, wing, leg, or hinged part has an attachment contract with parent socket, localStart/localEnd, contact type, embed/overlap, and gap tolerance."
+        ],
+        "evidenceRefs": [
+          "full-object"
+        ],
+        "failureModes": [
+          "child part root floats away from the parent",
+          "branch/limb/tube is centered in space instead of pivoting from its root",
+          "parent-child transform mixes world and local coordinates"
+        ]
+      },
+      {
+        "id": "surface-material-response",
+        "name": "Surface material response",
+        "required": true,
+        "qualityCriteria": [
+          "Albedo zones, roughness, normal/bump/displacement intent, cavity dirt, edge wear, and local overrides are specified where visible.",
+          "Important materials define independent albedo, roughness, height/normal, and AO responses instead of reusing one texture for unrelated PBR channels.",
+          "Surface response is decomposed into macro, meso, and micro frequency bands with scale and amplitude tied to object scale."
+        ],
+        "evidenceRefs": [
+          "full-object"
+        ],
+        "failureModes": [
+          "surface looks like flat plastic",
+          "local material variation is missing or not tied to image evidence"
+        ]
+      },
+      {
+        "id": "reference-lookdev",
+        "name": "Reference color, material, and lighting response",
+        "required": true,
+        "qualityCriteria": [
+          "Material-pass names the reference-derived albedo palette, roughness variation, tactile normal/bump/displacement response, and local masks.",
+          "When a source image is available, run reference PBR extraction and require confidence >= 0.7 before treating maps as implementation-ready.",
+          "Lighting-pass names key/fill/rim or environment light, exposure, tone mapping, background, and contact shadow behavior.",
+          "Neutral, grazing-angle, and reference-matched renders prove that surface relief survives relighting and is not painted into albedo."
+        ],
+        "evidenceRefs": [
+          "full-object"
+        ],
+        "failureModes": [
+          "model has acceptable shape but reads as flat shaded or plastic",
+          "colors are a generic average instead of reference-observed local color zones",
+          "lighting is evenly ambient and cannot reproduce the source value range"
+        ]
+      }
+    ],
+    "visualDeltaChecks": [
+      "silhouette and negative-space delta",
+      "component hierarchy depth delta",
+      "repetition density and distribution delta",
+      "material albedo/roughness/normal response delta",
+      "local feature placement and scale delta"
+    ],
+    "antiShallowSpecRules": [
+      "Do not proceed to code if qualityContract.qualityBar is unassessed.",
+      "Do not proceed to code if the spec only contains a root component for a moderate or complex object.",
+      "Do not proceed to code if required featureGroups are not represented by componentTree, materials, or repetitionSystems.",
+      "Do not proceed to code if visible local features are described only in prose and not attached to components/materials/evidenceRefs.",
+      "Do not proceed past structural-pass if attached child parts lack attachment.parentSocket, localStart, localEnd, embedDepth/overlap, and gapTolerance.",
+      "Do not pass material look-dev when albedo is reused as roughness, height, normal, or AO.",
+      "Do not pass material look-dev without macro, meso, and micro surface frequency bands for close-up materials.",
+      "Do not pass reference-fidelity material look-dev from a source image without usable referencePbr maps or an explicit documented limitation.",
+      "Do not patch a spec with extracted PBR maps when extraction confidence is below the target threshold unless the user explicitly accepts lower fidelity.",
+      "Do not place adjacent separate-geometry parts below 0.02 world-unit seam overlap (source: grimoire/build/geometry_patterns.md).",
+      "Do not satisfy raised or recessed relief, fasteners, or grip structure with a map alone when the feature affects form; use geometry or displacement (source: grimoire/build/geometry_patterns.md).",
+      "Adjacent components must overlap by at least 0.02 world units at shared seams (source: grimoire/build/geometry_patterns.md).",
+      "Raised or recessed relief and fasteners must be geometry, instanced micro-parts, or displacement; a map alone is an approximation (source: grimoire/build/geometry_patterns.md)."
+    ],
+    "mustNotDo": [
+      "Do not proceed to code if qualityContract.qualityBar is unassessed.",
+      "Do not proceed to code if the spec only contains a root component for a moderate or complex object.",
+      "Do not proceed to code if required featureGroups are not represented by componentTree, materials, or repetitionSystems.",
+      "Do not proceed to code if visible local features are described only in prose and not attached to components/materials/evidenceRefs.",
+      "Do not proceed past structural-pass if attached child parts lack attachment.parentSocket, localStart, localEnd, embedDepth/overlap, and gapTolerance.",
+      "Do not pass material look-dev when albedo is reused as roughness, height, normal, or AO.",
+      "Do not pass material look-dev without macro, meso, and micro surface frequency bands for close-up materials.",
+      "Do not pass reference-fidelity material look-dev from a source image without usable referencePbr maps or an explicit documented limitation.",
+      "Do not patch a spec with extracted PBR maps when extraction confidence is below the target threshold unless the user explicitly accepts lower fidelity.",
+      "Do not place adjacent separate-geometry parts below 0.02 world-unit seam overlap (source: grimoire/build/geometry_patterns.md).",
+      "Do not satisfy raised or recessed relief, fasteners, or grip structure with a map alone when the feature affects form; use geometry or displacement (source: grimoire/build/geometry_patterns.md).",
+      "Adjacent components must overlap by at least 0.02 world units at shared seams (source: grimoire/build/geometry_patterns.md).",
+      "Raised or recessed relief and fasteners must be geometry, instanced micro-parts, or displacement; a map alone is an approximation (source: grimoire/build/geometry_patterns.md)."
+    ]
+  },
+  "qualityTargets": {
+    "targetFidelity": 0.7,
+    "mustMatch": [
+      "macro silhouette and proportions",
+      "primary material albedo/roughness response",
+      "reference-derived PBR material response at or above 0.7 confidence when source pixels are usable",
+      "most recognizable local features"
+    ],
+    "niceToHave": [
+      "micro scratches, stains, chips, and dirt masks",
+      "secondary lighting match"
+    ],
+    "fpsTarget": 60,
+    "reviewViewpoints": [
+      "front",
+      "three-quarter",
+      "side",
+      "thickness-axis",
+      "long-axis"
+    ]
+  },
+  "selfCorrectLoop": {
+    "enabled": true,
+    "visualAcceptance": {
+      "reviewer": "ai-vision",
+      "threshold": 0.7,
+      "comparisonArtifactRequired": true,
+      "layerScoresRequired": true,
+      "codePixelDiffIsAcceptanceAuthority": false,
+      "scoringRule": "AI vision must inspect a side-by-side reference/render sheet and score the current pass from 0 to 1. Pixel-diff code may assist diagnostics but cannot approve a pass.",
+      "requiredLayerScores": [
+        "silhouetteProportion",
+        "componentStructure",
+        "formDetail",
+        "materialSurface",
+        "lightingCamera"
+      ],
+      "featureReviewPolicy": {
+        "enabled": true,
+        "reviewUnit": "semantic-subsystem",
+        "maxCriticalFeaturesPerPass": 5,
+        "maxImportantFeaturesPerPass": 3,
+        "criticalDefaultThreshold": 0.8,
+        "importantAverageThreshold": 0.65,
+        "adaptiveEscalation": true,
+        "singleImagePairOnly": true,
+        "selectionRule": "Choose only the most visually salient, identity-defining, user-prioritized, or high-risk semantic systems. Group repeated parts instead of reviewing every mesh. AI vision scores every selected feature from the same full reference/render pair."
+      }
+    },
+    "reviewAfterPasses": [
+      "blockout",
+      "structural-pass",
+      "form-refinement",
+      "material-pass",
+      "surface-pass",
+      "lighting-pass",
+      "interaction-pass",
+      "optimization-pass"
+    ],
+    "allowedActions": [
+      "continue",
+      "refine-spec",
+      "refine-code",
+      "request-input",
+      "stop"
+    ],
+    "specRefineTriggers": [
+      "missing component",
+      "wrong primitive family",
+      "wrong proportions",
+      "material layer under-specified",
+      "local feature not traceable to viewEvidence",
+      "reference ambiguity discovered during implementation"
+    ],
+    "codeRefineTriggers": [
+      "spec is adequate but generated geometry/material does not match",
+      "browser render differs from reference",
+      "performance budget exceeded",
+      "lighting hides geometry or material response"
+    ],
+    "stopCriteria": [
+      "target fidelity reached or user accepts current approximation",
+      "remaining gaps require new reference images or manual art"
+    ],
+    "screenshotPolicy": {
+      "requiredForPasses": [
+        "blockout",
+        "structural-pass",
+        "form-refinement",
+        "material-pass",
+        "surface-pass",
+        "lighting-pass",
+        "interaction-pass"
+      ],
+      "preferredCapture": "in-app-browser-screenshot",
+      "fallbackCapture": "user-supplied-screenshot-path",
+      "minimumEvidence": "Each visual pass needs a reference image, rendered screenshot, side-by-side comparison sheet, AI vision score, layer scores, and critique before choosing continue.",
+      "reviewPairRule": "Compare the same camera/viewpoint whenever possible; do not judge a front reference against a random render angle.",
+      "acceptanceAuthority": "AI vision review of the comparison sheet. Code-generated pixel similarity is not sufficient evidence."
+    }
+  },
+  "featureReviewTargets": [
+    {
+      "id": "wreath-arrangement",
+      "name": "20-element measured arrangement (positions/angles/lengths)",
+      "tier": "critical",
+      "passIds": [
+        "blockout",
+        "structural-pass"
+      ],
+      "minimumScore": 0.8,
+      "mustPass": true,
+      "componentRefs": [
+        "wreath"
+      ],
+      "evidenceRefs": [
+        "full-object"
+      ]
+    },
+    {
+      "id": "star-void",
+      "name": "Central star-shaped negative space preserved",
+      "tier": "critical",
+      "passIds": [
+        "blockout",
+        "structural-pass"
+      ],
+      "minimumScore": 0.8,
+      "mustPass": true,
+      "componentRefs": [
+        "wreath"
+      ],
+      "evidenceRefs": [
+        "full-object"
+      ]
+    },
+    {
+      "id": "dumbbell-motif",
+      "name": "Two dot-bar-dot dumbbells read as molecular bonds",
+      "tier": "critical",
+      "passIds": [
+        "structural-pass",
+        "form-refinement"
+      ],
+      "minimumScore": 0.8,
+      "mustPass": true,
+      "componentRefs": [
+        "arch-dumbbell"
+      ],
+      "evidenceRefs": [
+        "full-object"
+      ]
+    },
+    {
+      "id": "rim-outline",
+      "name": "Uniform white rim visible on every element from front view",
+      "tier": "important",
+      "passIds": [
+        "form-refinement",
+        "material-pass"
+      ],
+      "minimumScore": 0.7,
+      "mustPass": false,
+      "componentRefs": [
+        "rim-shells"
+      ],
+      "evidenceRefs": [
+        "full-object"
+      ]
+    },
+    {
+      "id": "gradient-albedo",
+      "name": "NW sky-blue to SE indigo per-element gradient",
+      "tier": "critical",
+      "passIds": [
+        "material-pass"
+      ],
+      "minimumScore": 0.75,
+      "mustPass": true,
+      "componentRefs": [
+        "arch-capsule",
+        "arch-dumbbell",
+        "arch-dot"
+      ],
+      "evidenceRefs": [
+        "full-object"
+      ]
+    },
+    {
+      "id": "enamel-response",
+      "name": "Gloss enamel + clearcoat response, matte plate contrast",
+      "tier": "important",
+      "passIds": [
+        "material-pass",
+        "lighting-pass"
+      ],
+      "minimumScore": 0.65,
+      "mustPass": false,
+      "componentRefs": [
+        "arch-capsule",
+        "plate"
+      ],
+      "evidenceRefs": [
+        "full-object"
+      ]
+    }
+  ],
+  "sculptPipeline": {
+    "passGateMode": "locked-sequential",
+    "passOrder": [
+      "blockout",
+      "structural-pass",
+      "form-refinement",
+      "material-pass",
+      "surface-pass",
+      "lighting-pass",
+      "interaction-pass",
+      "optimization-pass"
+    ],
+    "currentPass": "structural-pass",
+    "completedPasses": [
+      "blockout"
+    ],
+    "lastCompletedPass": "blockout",
+    "blockedReason": "",
+    "nextRequiredEvidence": [
+      "Macro, meso, and repeated structures meet qualityContract.minimumSpecDepth.",
+      "Parent-child relations, joints, seams, sockets, and contact points are explicit.",
+      "Every attached child appendage/connector has parentSocket, localStart/localEnd, contactType, embedDepth or overlap, and gapTolerance.",
+      "AI vision comparison score meets selfCorrectLoop.visualAcceptance.threshold.",
+      "attachment contracts for child appendages/connectors",
+      "no floating child roots/joints in the browser screenshot",
+      "browser render screenshot from your agent's browser/screenshot tool",
+      "single side-by-side full reference/render comparison sheet",
+      "all critical semantic feature scores at or above their thresholds",
+      "self-correction review appended with action=continue before the next pass"
+    ]
+  },
+  "lookDevTargets": {
+    "qualityPriority": "reference-fidelity",
+    "materialPass": {
+      "albedoPaletteRequired": true,
+      "roughnessVariationRequired": true,
+      "normalOrBumpRequired": true,
+      "localOverridesRequired": true,
+      "minimumTextureResolution": 1024,
+      "preferredTextureResolution": 2048,
+      "independentMapChannels": [
+        "albedo",
+        "roughness",
+        "height",
+        "normal",
+        "ambient-occlusion"
+      ],
+      "requiredSurfaceFrequencyBands": [
+        "macro",
+        "meso",
+        "micro"
+      ],
+      "geometryReliefRequiredWhenSilhouetteAffected": true,
+      "referencePbrExtraction": {
+        "requiredWhenSourceImagePresent": false,
+        "targetThreshold": 0.7,
+        "stopOnLowConfidence": true,
+        "script": "forge/stage1_intake/extract_pbr_evidence.py",
+        "acceptedLimitation": "DOCUMENTED LIMITATION: source is flat vector artwork — zero photographic PBR signal exists. Albedo is measured exactly per element (shapes.json fillHex, deterministic extraction). Roughness/normal/clearcoat are declared stylization. Extraction attempt recorded: pbr/mat-enamel confidence 0.647 (conditional) — inference floor for a flat uniform crop."
+      },
+      "mustAvoid": [
+        "single flat albedo per material",
+        "uniform roughness",
+        "albedo texture reused as roughness/height/normal/AO",
+        "single-frequency random noise",
+        "plastic-looking smooth bark, stone, cloth, foliage, or aged material",
+        "local color/detail described only in prose without material masks",
+        "claiming exact PBR recovery when confidence is below the target threshold"
+      ]
+    },
+    "lightingPass": {
+      "requiredTerms": [
+        "key light",
+        "fill light",
+        "rim or environment light",
+        "exposure",
+        "tone mapping",
+        "background",
+        "contact shadow"
+      ],
+      "mustAvoid": [
+        "ambient-only lighting",
+        "flat value range",
+        "missing contact shadow",
+        "reference lighting copied without separating material readability"
+      ]
+    },
+    "screenshotReview": [
+      "Compare albedo palette and local color zones.",
+      "Compare roughness/normal/bump response under light.",
+      "Compare cavity dirt, edge wear, stains, moss, scratches, or other local masks.",
+      "Compare key/fill/rim structure, exposure, tone mapping, background, and contact shadows.",
+      "Capture a neutral-light render to verify material readability without reference lighting.",
+      "Capture a grazing-light close-up to expose flat normals, uniform roughness, tiling, and plastic highlights.",
+      "Capture a reference-matched render from the same camera framing as the source."
+    ]
+  },
+  "actionReadiness": {
+    "contract": "Every macro/meso component should be generated as a stable named Object3D pivot node with a mesh child, action metadata, optional sockets, collider proxy, and destruction metadata.",
+    "defaultRigType": "action-ready-static-rig",
+    "rootMotionNode": "root",
+    "requiredComponentFields": [
+      "id",
+      "parent",
+      "transform",
+      "attachment for child appendages, connectors, limbs, tubes, handles, legs, horns, wings, branches, or cables",
+      "actionProfile.animationRole",
+      "actionProfile.pivot",
+      "actionProfile.collider",
+      "actionProfile.destruction"
+    ],
+    "transformChannels": [
+      "translate",
+      "rotate",
+      "scale",
+      "bend",
+      "twist",
+      "detach",
+      "visibility",
+      "material-state"
+    ],
+    "authoringRules": [
+      "Do not collapse independently movable parts into one mesh.",
+      "Put transforms on component pivot groups, not only on raw meshes.",
+      "For attached child parts, put the pivot at the semantic root/socket and build visible geometry from localStart to localEnd.",
+      "Represent hinge, socket, detachable, and breakable intent even when no animation is implemented yet.",
+      "Use simplified collider proxies for runtime physics instead of visual mesh colliders by default."
+    ],
+    "destructionPolicy": {
+      "defaultBreakable": false,
+      "fractureGroupNaming": "Use stable semantic names such as body-shell, left-hinge, glass-panel, branch-segment.",
+      "debrisStrategy": "Prefer detachable component groups and a small number of procedural fragments over random mesh explosion."
+    }
+  },
+  "assumptions": [
+    "Flat 2D mark rebuilt as dimensional badge: capsule cross-sections are round (declared stylization, not observed).",
+    "White outline realized as a slightly larger white backing solid offset -z behind each blue element.",
+    "Backing plate included (rounded dark square) and toggleable; icon crop shows black field.",
+    "Back face mirrors front treatment (undefined in source).",
+    "All former unknowns resolved by declared stylization decisions: extrusion depth 0.10 of wreath diameter with round capsule cross-section; backing plate included and toggleable; back face mirrors front."
+  ],
+  "coordinateFrame": {
+    "front": "camera-facing side in the reference image",
+    "up": "image up direction",
+    "scaleReference": "unit scale; adjust after first browser render"
+  },
+  "silhouette": {
+    "boundingShape": "disc-like wreath (outer radius 1.0 world unit) of 20 discrete rounded elements, inscribed in optional rounded-square plate 2.7 x 2.7",
+    "aspectRatios": [
+      "wreath diameter : element width ~ 13:1",
+      "plate : wreath diameter ~ 1.35:1"
+    ],
+    "symmetry": "approximate radial pinwheel, deliberately irregular — NOT n-fold; per-element angles/lengths are measured data",
+    "dominantCurves": [
+      "stadium (capsule) end arcs on every element",
+      "circular dots",
+      "implied circular wreath flow"
+    ],
+    "negativeSpaces": [
+      "central star-shaped void, radius ~0.30 world units, no element interior crosses it",
+      "dark gaps between all elements — elements never touch"
+    ],
+    "landmarks": [
+      "vertical dumbbell upper-center",
+      "vertical dumbbell lower-center",
+      "longest capsules near cardinal positions"
+    ]
+  },
+  "viewEvidence": [
+    {
+      "id": "full-object",
+      "view": "primary",
+      "imageRegion": {
+        "x": 0.0,
+        "y": 0.0,
+        "width": 1.0,
+        "height": 1.0,
+        "units": "normalized"
+      },
+      "observations": [
+        "20 discrete coplanar elements: 10 capsules, 2 dumbbells (dot-bar-dot), 8 dots (measured, shapes.json)",
+        "every element carries a uniform near-white rim stroke ~0.14x its width",
+        "per-element flat blue fill, light sky blue NW to deep indigo SE",
+        "black field behind; no shadows, no lighting cues in source (flat art)"
+      ],
+      "confidence": 0.95
+    }
+  ],
+  "componentTree": [
+    {
+      "id": "root",
+      "name": "EDF Molecular Wreath Emblem",
+      "level": "macro",
+      "role": "body",
+      "importance": 1.0,
+      "confidence": 0.95,
+      "primitive": "box",
+      "topologyClass": "assembled-solid",
+      "topologyRationale": "Assembly root; box is a non-rendered collider proxy only, geometry lives in children.",
+      "geometryDescriptor": {
+        "topologyIntent": "smooth capsule solids, hemispherical caps, no hard edges",
+        "edgeTreatment": {
+          "type": "rounded",
+          "bevelRadius": 0.0,
+          "segments": 24
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      },
+      "parent": null,
+      "attachment": null,
+      "dimensions": {
+        "width": 2.7,
+        "height": 2.7,
+        "depth": 0.4,
+        "units": "relative",
+        "confidence": 0.9
+      },
+      "transform": {
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "actionProfile": {
+        "animationRole": "root",
+        "pivot": {
+          "mode": "custom",
+          "localPosition": [
+            0,
+            0,
+            0
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "confidence": 0.9
+        },
+        "transformChannels": {
+          "translate": true,
+          "rotate": true,
+          "scale": true,
+          "bend": false,
+          "twist": false,
+          "detach": false,
+          "visibility": true,
+          "materialState": true
+        },
+        "sockets": [],
+        "collider": {
+          "type": "box",
+          "offset": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "isTrigger": false,
+          "notes": "proxy sized from element length/width"
+        },
+        "constraints": [],
+        "destruction": {
+          "breakable": false,
+          "fractureGroup": "root",
+          "seamRefs": [],
+          "detachableFragments": [],
+          "breakImpulse": 0.0,
+          "debrisMaterial": "mat-enamel"
+        }
+      },
+      "material": "mat-plate",
+      "materialLayers": [
+        "mat-plate"
+      ],
+      "deformations": [],
+      "joints": [],
+      "seams": [],
+      "localFeatures": [],
+      "surfaceDetail": {
+        "macroRoughness": 0.0,
+        "microRoughness": 0.0,
+        "bumpAmplitude": 0.0,
+        "normalPattern": "",
+        "displacementPattern": "",
+        "occlusionPattern": "",
+        "edgeWearPattern": "",
+        "notes": "assembly node"
+      },
+      "evidenceRefs": [
+        "full-object"
+      ],
+      "details": [],
+      "fidelityTier": "final",
+      "colorMaterialRecipe": {
+        "dominantAlbedo": "rgba(75, 168, 240, 1.0)",
+        "secondaryAlbedo": "rgba(44, 63, 214, 1.0)",
+        "materialClass": "ceramic",
+        "materialClassConfidence": 0.6,
+        "colorGradient": {
+          "type": "linear",
+          "stops": [
+            {
+              "position": 0.0,
+              "color": "rgba(95, 183, 242, 1.0)"
+            },
+            {
+              "position": 1.0,
+              "color": "rgba(44, 63, 214, 1.0)"
+            }
+          ],
+          "axis": "upper-left to lower-right across wreath (measured per-element, shapes.json)"
+        }
+      }
+    },
+    {
+      "id": "plate",
+      "name": "Backing plate (rounded square)",
+      "level": "macro",
+      "role": "presentation-base",
+      "importance": 0.4,
+      "confidence": 0.7,
+      "primitive": "extrude",
+      "topologyClass": "assembled-solid",
+      "topologyRationale": "Flat rigid rounded-square slab; genuinely primitive-buildable (RoundedRect Shape extruded).",
+      "geometryDescriptor": {
+        "topologyIntent": "rounded-rect profile extruded 0.10, corner radius 0.5, small edge bevel",
+        "edgeTreatment": {
+          "type": "rounded",
+          "bevelRadius": 0.0,
+          "segments": 24
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      },
+      "parent": "root",
+      "attachment": {
+        "parentSocket": "root-origin",
+        "localStart": [
+          0,
+          0,
+          -0.23
+        ],
+        "localEnd": [
+          0,
+          0,
+          -0.13
+        ],
+        "contactType": "butt",
+        "embedDepth": 0.0,
+        "overlap": 0.02,
+        "gapTolerance": 0.01
+      },
+      "dimensions": {
+        "width": 2.7,
+        "height": 2.7,
+        "depth": 0.1,
+        "units": "relative",
+        "confidence": 0.7
+      },
+      "transform": {
+        "position": [
+          0,
+          0,
+          -0.18
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "actionProfile": {
+        "animationRole": "presentation-base",
+        "pivot": {
+          "mode": "custom",
+          "localPosition": [
+            0,
+            0,
+            0
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "confidence": 0.9
+        },
+        "transformChannels": {
+          "translate": true,
+          "rotate": true,
+          "scale": true,
+          "bend": false,
+          "twist": false,
+          "detach": false,
+          "visibility": true,
+          "materialState": true
+        },
+        "sockets": [],
+        "collider": {
+          "type": "box",
+          "offset": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "isTrigger": false,
+          "notes": "proxy sized from element length/width"
+        },
+        "constraints": [],
+        "destruction": {
+          "breakable": false,
+          "fractureGroup": "presentation-base",
+          "seamRefs": [],
+          "detachableFragments": [],
+          "breakImpulse": 0.0,
+          "debrisMaterial": "mat-enamel"
+        }
+      },
+      "material": "mat-plate",
+      "materialLayers": [
+        "mat-plate"
+      ],
+      "deformations": [],
+      "joints": [],
+      "seams": [],
+      "localFeatures": [
+        {
+          "id": "lf-plate-toggle",
+          "kind": "presentation-option",
+          "description": "options.plate=false hides the plate for transparent-background embedding",
+          "evidenceRefs": [
+            "full-object"
+          ]
+        }
+      ],
+      "surfaceDetail": {
+        "macroRoughness": 0.85,
+        "microRoughness": 0.6,
+        "bumpAmplitude": 0.004,
+        "normalPattern": "fine anisotropic micro-noise, soft-touch matte",
+        "displacementPattern": "",
+        "occlusionPattern": "corner-soft AO",
+        "edgeWearPattern": "",
+        "notes": "near-black matte so wreath carries all chroma"
+      },
+      "evidenceRefs": [
+        "full-object"
+      ],
+      "details": [],
+      "fidelityTier": "final",
+      "colorMaterialRecipe": {
+        "dominantAlbedo": "rgba(10, 13, 22, 1.0)",
+        "secondaryAlbedo": "rgba(14, 18, 32, 1.0)",
+        "materialClass": "plastic",
+        "materialClassConfidence": 0.6
+      }
+    },
+    {
+      "id": "wreath",
+      "name": "Wreath element cluster (pivot)",
+      "level": "macro",
+      "role": "identity-cluster",
+      "importance": 1.0,
+      "confidence": 0.95,
+      "primitive": "instanced-cluster",
+      "topologyClass": "assembled-solid",
+      "topologyRationale": "Pivot group holding 20 instanced element pivots; spin/explode anchor.",
+      "geometryDescriptor": {
+        "topologyIntent": "smooth capsule solids, hemispherical caps, no hard edges",
+        "edgeTreatment": {
+          "type": "rounded",
+          "bevelRadius": 0.0,
+          "segments": 24
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      },
+      "parent": "root",
+      "attachment": {
+        "parentSocket": "root-origin",
+        "localStart": [
+          0,
+          0,
+          0
+        ],
+        "localEnd": [
+          0,
+          0,
+          0
+        ],
+        "contactType": "grouped-pivot",
+        "embedDepth": 0.0,
+        "overlap": 0.02,
+        "gapTolerance": 0.0
+      },
+      "dimensions": {
+        "width": 2.0,
+        "height": 2.0,
+        "depth": 0.2,
+        "units": "relative",
+        "confidence": 0.95
+      },
+      "transform": {
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "actionProfile": {
+        "animationRole": "identity-cluster",
+        "pivot": {
+          "mode": "custom",
+          "localPosition": [
+            0,
+            0,
+            0
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "confidence": 0.9
+        },
+        "transformChannels": {
+          "translate": true,
+          "rotate": true,
+          "scale": true,
+          "bend": false,
+          "twist": false,
+          "detach": false,
+          "visibility": true,
+          "materialState": true
+        },
+        "sockets": [],
+        "collider": {
+          "type": "sphere",
+          "offset": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "isTrigger": false,
+          "notes": "proxy sized from element length/width"
+        },
+        "constraints": [],
+        "destruction": {
+          "breakable": false,
+          "fractureGroup": "identity-cluster",
+          "seamRefs": [],
+          "detachableFragments": [],
+          "breakImpulse": 0.0,
+          "debrisMaterial": "mat-enamel"
+        }
+      },
+      "material": "mat-enamel",
+      "materialLayers": [
+        "mat-enamel",
+        "mat-rim"
+      ],
+      "deformations": [],
+      "joints": [],
+      "seams": [],
+      "localFeatures": [
+        {
+          "id": "lf-star-void",
+          "kind": "placement-contract",
+          "description": "no element interior may cross r < 0.30 of wreath radius from center — preserves star-shaped negative space (det-star-void)",
+          "evidenceRefs": [
+            "full-object"
+          ]
+        },
+        {
+          "id": "lf-no-touch",
+          "kind": "placement-contract",
+          "description": "elements never touch: minimum inter-element gap from measured centers is preserved verbatim (positions are data, not layout logic)",
+          "evidenceRefs": [
+            "full-object"
+          ]
+        }
+      ],
+      "surfaceDetail": {
+        "macroRoughness": 0.0,
+        "microRoughness": 0.0,
+        "bumpAmplitude": 0.0,
+        "normalPattern": "",
+        "displacementPattern": "",
+        "occlusionPattern": "",
+        "edgeWearPattern": "",
+        "notes": "group node"
+      },
+      "evidenceRefs": [
+        "full-object"
+      ],
+      "details": [],
+      "fidelityTier": "final",
+      "colorMaterialRecipe": {
+        "dominantAlbedo": "rgba(75, 168, 240, 1.0)",
+        "secondaryAlbedo": "rgba(44, 63, 214, 1.0)",
+        "materialClass": "ceramic",
+        "materialClassConfidence": 0.6,
+        "colorGradient": {
+          "type": "linear",
+          "stops": [
+            {
+              "position": 0.0,
+              "color": "rgba(95, 183, 242, 1.0)"
+            },
+            {
+              "position": 1.0,
+              "color": "rgba(44, 63, 214, 1.0)"
+            }
+          ],
+          "axis": "upper-left to lower-right across wreath (measured per-element, shapes.json)"
+        }
+      }
+    },
+    {
+      "id": "arch-capsule",
+      "name": "Capsule element archetype",
+      "level": "meso",
+      "role": "wreath-element-archetype",
+      "importance": 0.9,
+      "confidence": 0.95,
+      "primitive": "capsule",
+      "topologyClass": "assembled-solid",
+      "topologyRationale": "Stadium bar: CapsuleGeometry radius w/2, cylinder length L-w, axis in wreath plane at measured angle; hemispherical caps.",
+      "geometryDescriptor": {
+        "topologyIntent": "smooth capsule solids, hemispherical caps, no hard edges",
+        "edgeTreatment": {
+          "type": "rounded",
+          "bevelRadius": 0.0,
+          "segments": 24
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      },
+      "parent": "wreath",
+      "attachment": {
+        "parentSocket": "wreath-plane",
+        "localStart": [
+          0,
+          0,
+          0
+        ],
+        "localEnd": [
+          0,
+          0,
+          0.02
+        ],
+        "contactType": "grouped-pivot",
+        "embedDepth": 0.0,
+        "overlap": 0.02,
+        "gapTolerance": 0.0
+      },
+      "dimensions": {
+        "width": 0.14,
+        "height": 0.14,
+        "depth": 0.14,
+        "units": "relative",
+        "confidence": 0.9
+      },
+      "transform": {
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "actionProfile": {
+        "animationRole": "wreath-element",
+        "pivot": {
+          "mode": "custom",
+          "localPosition": [
+            0,
+            0,
+            0
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "confidence": 0.9
+        },
+        "transformChannels": {
+          "translate": true,
+          "rotate": true,
+          "scale": true,
+          "bend": false,
+          "twist": false,
+          "detach": true,
+          "visibility": true,
+          "materialState": true
+        },
+        "sockets": [],
+        "collider": {
+          "type": "capsule",
+          "offset": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "isTrigger": false,
+          "notes": "proxy sized from element length/width"
+        },
+        "constraints": [],
+        "destruction": {
+          "breakable": true,
+          "fractureGroup": "wreath-element",
+          "seamRefs": [],
+          "detachableFragments": [],
+          "breakImpulse": 0.4,
+          "debrisMaterial": "mat-enamel"
+        }
+      },
+      "material": "mat-enamel",
+      "materialLayers": [
+        "mat-enamel",
+        "mat-rim"
+      ],
+      "deformations": [],
+      "joints": [],
+      "seams": [],
+      "localFeatures": [
+        {
+          "id": "lf-arch-capsule-rim",
+          "kind": "outline-shell",
+          "description": "white backing solid: same shape scaled +28% in cross-section (rim reads ~0.14x width from front), offset z=-0.045 behind blue solid (det-white-rim)",
+          "evidenceRefs": [
+            "full-object"
+          ]
+        }
+      ],
+      "surfaceDetail": {
+        "macroRoughness": 0.28,
+        "microRoughness": 0.18,
+        "bumpAmplitude": 0.0015,
+        "normalPattern": "subtle enamel orange-peel micro-noise",
+        "displacementPattern": "",
+        "occlusionPattern": "soft AO where rim meets fill",
+        "edgeWearPattern": "",
+        "notes": "maps detail det-length-variance"
+      },
+      "evidenceRefs": [
+        "full-object"
+      ],
+      "details": [
+        "det-length-variance"
+      ],
+      "fidelityTier": "final",
+      "colorMaterialRecipe": {
+        "dominantAlbedo": "rgba(75, 168, 240, 1.0)",
+        "secondaryAlbedo": "rgba(44, 63, 214, 1.0)",
+        "materialClass": "ceramic",
+        "materialClassConfidence": 0.65,
+        "colorGradient": {
+          "type": "linear",
+          "stops": [
+            {
+              "position": 0.0,
+              "color": "rgba(95, 183, 242, 1.0)"
+            },
+            {
+              "position": 1.0,
+              "color": "rgba(44, 63, 214, 1.0)"
+            }
+          ],
+          "axis": "upper-left to lower-right across wreath (measured per-element, shapes.json)"
+        }
+      }
+    },
+    {
+      "id": "arch-dumbbell",
+      "name": "Dumbbell element archetype",
+      "level": "meso",
+      "role": "wreath-element-archetype",
+      "importance": 0.9,
+      "confidence": 0.95,
+      "primitive": "capsule",
+      "topologyClass": "assembled-solid",
+      "topologyRationale": "Dot-bar-dot: two spheres r=w/2 at segment ends + connecting cylinder r=0.5*(w/2); reads as molecular bond (det-dumbbell-top/bottom).",
+      "geometryDescriptor": {
+        "topologyIntent": "smooth capsule solids, hemispherical caps, no hard edges",
+        "edgeTreatment": {
+          "type": "rounded",
+          "bevelRadius": 0.0,
+          "segments": 24
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      },
+      "parent": "wreath",
+      "attachment": {
+        "parentSocket": "wreath-plane",
+        "localStart": [
+          0,
+          0,
+          0
+        ],
+        "localEnd": [
+          0,
+          0,
+          0.02
+        ],
+        "contactType": "grouped-pivot",
+        "embedDepth": 0.0,
+        "overlap": 0.02,
+        "gapTolerance": 0.0
+      },
+      "dimensions": {
+        "width": 0.14,
+        "height": 0.14,
+        "depth": 0.14,
+        "units": "relative",
+        "confidence": 0.9
+      },
+      "transform": {
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "actionProfile": {
+        "animationRole": "wreath-element",
+        "pivot": {
+          "mode": "custom",
+          "localPosition": [
+            0,
+            0,
+            0
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "confidence": 0.9
+        },
+        "transformChannels": {
+          "translate": true,
+          "rotate": true,
+          "scale": true,
+          "bend": false,
+          "twist": false,
+          "detach": true,
+          "visibility": true,
+          "materialState": true
+        },
+        "sockets": [],
+        "collider": {
+          "type": "capsule",
+          "offset": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "isTrigger": false,
+          "notes": "proxy sized from element length/width"
+        },
+        "constraints": [],
+        "destruction": {
+          "breakable": true,
+          "fractureGroup": "wreath-element",
+          "seamRefs": [],
+          "detachableFragments": [],
+          "breakImpulse": 0.4,
+          "debrisMaterial": "mat-enamel"
+        }
+      },
+      "material": "mat-enamel",
+      "materialLayers": [
+        "mat-enamel",
+        "mat-rim"
+      ],
+      "deformations": [],
+      "joints": [],
+      "seams": [],
+      "localFeatures": [
+        {
+          "id": "lf-arch-dumbbell-rim",
+          "kind": "outline-shell",
+          "description": "white backing solid: same shape scaled +28% in cross-section (rim reads ~0.14x width from front), offset z=-0.045 behind blue solid (det-white-rim)",
+          "evidenceRefs": [
+            "full-object"
+          ]
+        }
+      ],
+      "surfaceDetail": {
+        "macroRoughness": 0.28,
+        "microRoughness": 0.18,
+        "bumpAmplitude": 0.0015,
+        "normalPattern": "subtle enamel orange-peel micro-noise",
+        "displacementPattern": "",
+        "occlusionPattern": "soft AO where rim meets fill",
+        "edgeWearPattern": "",
+        "notes": "maps detail det-dumbbell-top"
+      },
+      "evidenceRefs": [
+        "full-object"
+      ],
+      "details": [
+        "det-dumbbell-top"
+      ],
+      "fidelityTier": "final",
+      "colorMaterialRecipe": {
+        "dominantAlbedo": "rgba(75, 168, 240, 1.0)",
+        "secondaryAlbedo": "rgba(44, 63, 214, 1.0)",
+        "materialClass": "ceramic",
+        "materialClassConfidence": 0.65,
+        "colorGradient": {
+          "type": "linear",
+          "stops": [
+            {
+              "position": 0.0,
+              "color": "rgba(95, 183, 242, 1.0)"
+            },
+            {
+              "position": 1.0,
+              "color": "rgba(44, 63, 214, 1.0)"
+            }
+          ],
+          "axis": "upper-left to lower-right across wreath (measured per-element, shapes.json)"
+        }
+      }
+    },
+    {
+      "id": "arch-dot",
+      "name": "Dot element archetype",
+      "level": "meso",
+      "role": "wreath-element-archetype",
+      "importance": 0.9,
+      "confidence": 0.95,
+      "primitive": "sphere",
+      "topologyClass": "assembled-solid",
+      "topologyRationale": "Sphere r=w/2 (round node).",
+      "geometryDescriptor": {
+        "topologyIntent": "smooth capsule solids, hemispherical caps, no hard edges",
+        "edgeTreatment": {
+          "type": "rounded",
+          "bevelRadius": 0.0,
+          "segments": 24
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      },
+      "parent": "wreath",
+      "attachment": {
+        "parentSocket": "wreath-plane",
+        "localStart": [
+          0,
+          0,
+          0
+        ],
+        "localEnd": [
+          0,
+          0,
+          0.02
+        ],
+        "contactType": "grouped-pivot",
+        "embedDepth": 0.0,
+        "overlap": 0.02,
+        "gapTolerance": 0.0
+      },
+      "dimensions": {
+        "width": 0.14,
+        "height": 0.14,
+        "depth": 0.14,
+        "units": "relative",
+        "confidence": 0.9
+      },
+      "transform": {
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "actionProfile": {
+        "animationRole": "wreath-element",
+        "pivot": {
+          "mode": "custom",
+          "localPosition": [
+            0,
+            0,
+            0
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "confidence": 0.9
+        },
+        "transformChannels": {
+          "translate": true,
+          "rotate": true,
+          "scale": true,
+          "bend": false,
+          "twist": false,
+          "detach": true,
+          "visibility": true,
+          "materialState": true
+        },
+        "sockets": [],
+        "collider": {
+          "type": "capsule",
+          "offset": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "isTrigger": false,
+          "notes": "proxy sized from element length/width"
+        },
+        "constraints": [],
+        "destruction": {
+          "breakable": true,
+          "fractureGroup": "wreath-element",
+          "seamRefs": [],
+          "detachableFragments": [],
+          "breakImpulse": 0.4,
+          "debrisMaterial": "mat-enamel"
+        }
+      },
+      "material": "mat-enamel",
+      "materialLayers": [
+        "mat-enamel",
+        "mat-rim"
+      ],
+      "deformations": [],
+      "joints": [],
+      "seams": [],
+      "localFeatures": [
+        {
+          "id": "lf-arch-dot-rim",
+          "kind": "outline-shell",
+          "description": "white backing solid: same shape scaled +28% in cross-section (rim reads ~0.14x width from front), offset z=-0.045 behind blue solid (det-white-rim)",
+          "evidenceRefs": [
+            "full-object"
+          ]
+        }
+      ],
+      "surfaceDetail": {
+        "macroRoughness": 0.28,
+        "microRoughness": 0.18,
+        "bumpAmplitude": 0.0015,
+        "normalPattern": "subtle enamel orange-peel micro-noise",
+        "displacementPattern": "",
+        "occlusionPattern": "soft AO where rim meets fill",
+        "edgeWearPattern": "",
+        "notes": "maps detail det-arrangement"
+      },
+      "evidenceRefs": [
+        "full-object"
+      ],
+      "details": [
+        "det-arrangement"
+      ],
+      "fidelityTier": "final",
+      "colorMaterialRecipe": {
+        "dominantAlbedo": "rgba(75, 168, 240, 1.0)",
+        "secondaryAlbedo": "rgba(44, 63, 214, 1.0)",
+        "materialClass": "ceramic",
+        "materialClassConfidence": 0.65,
+        "colorGradient": {
+          "type": "linear",
+          "stops": [
+            {
+              "position": 0.0,
+              "color": "rgba(95, 183, 242, 1.0)"
+            },
+            {
+              "position": 1.0,
+              "color": "rgba(44, 63, 214, 1.0)"
+            }
+          ],
+          "axis": "upper-left to lower-right across wreath (measured per-element, shapes.json)"
+        }
+      }
+    },
+    {
+      "id": "rim-shells",
+      "name": "White rim shell system",
+      "level": "micro",
+      "role": "outline-stroke",
+      "importance": 0.85,
+      "confidence": 0.95,
+      "primitive": "capsule",
+      "topologyClass": "conforming-shell",
+      "topologyRationale": "Thin white solids conforming behind each blue element to read as the uniform outline stroke.",
+      "geometryDescriptor": {
+        "topologyIntent": "smooth capsule solids, hemispherical caps, no hard edges",
+        "edgeTreatment": {
+          "type": "rounded",
+          "bevelRadius": 0.0,
+          "segments": 24
+        },
+        "deformationStack": [],
+        "uvStrategy": "generated procedural coordinates",
+        "normalStrategy": "vertex normals from generated geometry"
+      },
+      "parent": "wreath",
+      "attachment": {
+        "parentSocket": "wreath-plane",
+        "localStart": [
+          0,
+          0,
+          -0.045
+        ],
+        "localEnd": [
+          0,
+          0,
+          0
+        ],
+        "contactType": "overlap",
+        "embedDepth": 0.02,
+        "overlap": 0.04,
+        "gapTolerance": 0.0
+      },
+      "dimensions": {
+        "width": 0.18,
+        "height": 0.18,
+        "depth": 0.12,
+        "units": "relative",
+        "confidence": 0.9
+      },
+      "transform": {
+        "position": [
+          0,
+          0,
+          -0.045
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "actionProfile": {
+        "animationRole": "outline-shell",
+        "pivot": {
+          "mode": "custom",
+          "localPosition": [
+            0,
+            0,
+            0
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "confidence": 0.9
+        },
+        "transformChannels": {
+          "translate": true,
+          "rotate": true,
+          "scale": true,
+          "bend": false,
+          "twist": false,
+          "detach": false,
+          "visibility": true,
+          "materialState": true
+        },
+        "sockets": [],
+        "collider": {
+          "type": "capsule",
+          "offset": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "isTrigger": false,
+          "notes": "proxy sized from element length/width"
+        },
+        "constraints": [],
+        "destruction": {
+          "breakable": false,
+          "fractureGroup": "outline-shell",
+          "seamRefs": [],
+          "detachableFragments": [],
+          "breakImpulse": 0.0,
+          "debrisMaterial": "mat-enamel"
+        }
+      },
+      "material": "mat-rim",
+      "materialLayers": [
+        "mat-rim"
+      ],
+      "deformations": [],
+      "joints": [],
+      "seams": [],
+      "localFeatures": [
+        {
+          "id": "lf-rim-uniform",
+          "kind": "outline-stroke",
+          "description": "rim visual width uniform across all 20 elements (~0.14x element width) — det-white-rim",
+          "evidenceRefs": [
+            "full-object"
+          ]
+        }
+      ],
+      "surfaceDetail": {
+        "macroRoughness": 0.22,
+        "microRoughness": 0.15,
+        "bumpAmplitude": 0.001,
+        "normalPattern": "smooth gloss enamel",
+        "displacementPattern": "",
+        "occlusionPattern": "",
+        "edgeWearPattern": "",
+        "notes": ""
+      },
+      "evidenceRefs": [
+        "full-object"
+      ],
+      "details": [
+        "det-white-rim"
+      ],
+      "fidelityTier": "final",
+      "colorMaterialRecipe": {
+        "dominantAlbedo": "rgba(248, 251, 255, 1.0)",
+        "secondaryAlbedo": "rgba(238, 244, 251, 1.0)",
+        "materialClass": "ceramic",
+        "materialClassConfidence": 0.7
+      }
+    }
+  ],
+  "materials": [
+    {
+      "id": "mat-enamel",
+      "name": "Blue gloss enamel (per-element albedo)",
+      "type": "physical",
+      "shaderModel": "MeshPhysicalMaterial",
+      "baseColor": "#4ba8f0",
+      "color": "#4ba8f0",
+      "albedo": {
+        "dominant": "#4ba8f0",
+        "secondary": [
+          "#5fb7f2",
+          "#3d6ee8",
+          "#2c3fd6"
+        ],
+        "samplingNotes": "per-element solid albedo from measured fillHex (shapes.json); NW light sky -> SE deep indigo"
+      },
+      "colorVariation": {
+        "palette": [
+          "#4fa8f4",
+          "#489cf5",
+          "#4799f5",
+          "#4387ea",
+          "#3d73ed",
+          "#3664ee",
+          "#304cf0",
+          "#3056f1"
+        ],
+        "pattern": "per-instance-solid",
+        "amplitude": 0.0,
+        "heightCorrelation": 0.0
+      },
+      "textureResolution": 1024,
+      "textureProjection": {
+        "mode": "uv",
+        "repeat": [
+          1.0,
+          1.0
+        ],
+        "anisotropy": 8,
+        "texelDensityIntent": "solid albedo; bands live in roughness/normal only"
+      },
+      "surfaceFrequencyBands": [
+        {
+          "id": "macro",
+          "frequency": 1.5,
+          "amplitude": 0.03,
+          "role": "very gentle value breakup across element length"
+        },
+        {
+          "id": "meso",
+          "frequency": 10.0,
+          "amplitude": 0.02,
+          "role": "enamel orange-peel normal breakup"
+        },
+        {
+          "id": "micro",
+          "frequency": 48.0,
+          "amplitude": 0.015,
+          "role": "grazing-light highlight breakup"
+        }
+      ],
+      "roughness": {
+        "base": 0.35,
+        "variation": 0.06,
+        "map": "independent-procedural-field",
+        "localResponse": "slightly glossier on cap crowns, rougher near rim contact AO"
+      },
+      "metalness": {
+        "base": 0.0,
+        "variation": 0.0
+      },
+      "normal": {
+        "pattern": "enamel orange-peel from independent height field",
+        "strength": 0.12,
+        "scale": 18.0,
+        "space": "tangent"
+      },
+      "bump": {
+        "pattern": "none",
+        "amplitude": 0.0,
+        "scale": 1.0
+      },
+      "displacement": {
+        "pattern": "none",
+        "amplitude": 0.0,
+        "scale": 1.0,
+        "silhouetteAffects": false
+      },
+      "ambientOcclusion": {
+        "cavityStrength": 0.2,
+        "contactShadowBias": 0.3,
+        "notes": "soft contact AO where blue solid meets white rim shell"
+      },
+      "wear": {
+        "edgeWear": 0.0,
+        "scratches": [],
+        "chips": []
+      },
+      "dirt": {
+        "amount": 0.0,
+        "cavityBias": 0.0,
+        "color": "#0a0d16"
+      },
+      "localOverrides": [
+        {
+          "id": "ov-00",
+          "target": "el-00",
+          "channel": "albedo",
+          "value": "#4fa8f4",
+          "reason": "measured per-element fill (NW->SE gradient), shapes.json",
+          "evidenceRefs": [
+            "full-object"
+          ]
+        },
+        {
+          "id": "ov-01",
+          "target": "el-01",
+          "channel": "albedo",
+          "value": "#489cf5",
+          "reason": "measured per-element fill (NW->SE gradient), shapes.json",
+          "evidenceRefs": [
+            "full-object"
+          ]
+        },
+        {
+          "id": "ov-02",
+          "target": "el-02",
+          "channel": "albedo",
+          "value": "#4799f5",
+          "reason": "measured per-element fill (NW->SE gradient), shapes.json",
+          "evidenceRefs": [
+            "full-object"
+          ]
+        },
+        {
+          "id": "ov-03",
+          "target": "el-03",
+          "channel": "albedo",
+          "value": "#4387ea",
+          "reason": "measured per-element fill (NW->SE gradient), shapes.json",
+          "evidenceRefs": [
+            "full-object"
+          ]
+        },
+        {
+          "id": "ov-04",
+          "target": "el-04",
+          "channel": "albedo",
+          "value": "#3d73ed",
+          "reason": "measured per-element fill (NW->SE gradient), shapes.json",
+          "evidenceRefs": [
+            "full-object"
+          ]
+        },
+        {
+          "id": "ov-05",
+          "target": "el-05",
+          "channel": "albedo",
+          "value": "#3664ee",
+          "reason": "measured per-element fill (NW->SE gradient), shapes.json",
+          "evidenceRefs": [
+            "full-object"
+          ]
+        },
+        {
+          "id": "ov-06",
+          "target": "el-06",
+          "channel": "albedo",
+          "value": "#304cf0",
+          "reason": "measured per-element fill (NW->SE gradient), shapes.json",
+          "evidenceRefs": [
+            "full-object"
+          ]
+        },
+        {
+          "id": "ov-07",
+          "target": "el-07",
+          "channel": "albedo",
+          "value": "#3056f1",
+          "reason": "measured per-element fill (NW->SE gradient), shapes.json",
+          "evidenceRefs": [
+            "full-object"
+          ]
+        },
+        {
+          "id": "ov-08",
+          "target": "el-08",
+          "channel": "albedo",
+          "value": "#3766f4",
+          "reason": "measured per-element fill (NW->SE gradient), shapes.json",
+          "evidenceRefs": [
+            "full-object"
+          ]
+        },
+        {
+          "id": "ov-09",
+          "target": "el-09",
+          "channel": "albedo",
+          "value": "#325aef",
+          "reason": "measured per-element fill (NW->SE gradient), shapes.json",
+          "evidenceRefs": [
+            "full-object"
+          ]
+        },
+        {
+          "id": "ov-10",
+          "target": "el-10",
+          "channel": "albedo",
+          "value": "#396bf0",
+          "reason": "measured per-element fill (NW->SE gradient), shapes.json",
+          "evidenceRefs": [
+            "full-object"
+          ]
+        },
+        {
+          "id": "ov-11",
+          "target": "el-11",
+          "channel": "albedo",
+          "value": "#355df3",
+          "reason": "measured per-element fill (NW->SE gradient), shapes.json",
+          "evidenceRefs": [
+            "full-object"
+          ]
+        },
+        {
+          "id": "ov-12",
+          "target": "el-12",
+          "channel": "albedo",
+          "value": "#3967f5",
+          "reason": "measured per-element fill (NW->SE gradient), shapes.json",
+          "evidenceRefs": [
+            "full-object"
+          ]
+        },
+        {
+          "id": "ov-13",
+          "target": "el-13",
+          "channel": "albedo",
+          "value": "#4081eb",
+          "reason": "measured per-element fill (NW->SE gradient), shapes.json",
+          "evidenceRefs": [
+            "full-object"
+          ]
+        },
+        {
+          "id": "ov-14",
+          "target": "el-14",
+          "channel": "albedo",
+          "value": "#4997eb",
+          "reason": "measured per-element fill (NW->SE gradient), shapes.json",
+          "evidenceRefs": [
+            "full-object"
+          ]
+        },
+        {
+          "id": "ov-15",
+          "target": "el-15",
+          "channel": "albedo",
+          "value": "#4fa3f5",
+          "reason": "measured per-element fill (NW->SE gradient), shapes.json",
+          "evidenceRefs": [
+            "full-object"
+          ]
+        },
+        {
+          "id": "ov-16",
+          "target": "el-16",
+          "channel": "albedo",
+          "value": "#55b4f8",
+          "reason": "measured per-element fill (NW->SE gradient), shapes.json",
+          "evidenceRefs": [
+            "full-object"
+          ]
+        },
+        {
+          "id": "ov-17",
+          "target": "el-17",
+          "channel": "albedo",
+          "value": "#52aef6",
+          "reason": "measured per-element fill (NW->SE gradient), shapes.json",
+          "evidenceRefs": [
+            "full-object"
+          ]
+        },
+        {
+          "id": "ov-18",
+          "target": "el-18",
+          "channel": "albedo",
+          "value": "#4b9ff3",
+          "reason": "measured per-element fill (NW->SE gradient), shapes.json",
+          "evidenceRefs": [
+            "full-object"
+          ]
+        },
+        {
+          "id": "ov-19",
+          "target": "el-19",
+          "channel": "albedo",
+          "value": "#55afef",
+          "reason": "measured per-element fill (NW->SE gradient), shapes.json",
+          "evidenceRefs": [
+            "full-object"
+          ]
+        }
+      ],
+      "shaderNotes": [
+        "clearcoat 0.6, clearcoatRoughness 0.2 — premium badge lacquer",
+        "flat-paint rule: solid per-instance albedo, never a photo projection",
+        "independent roughness/normal fields; albedo never aliased into other channels",
+        "analyze_texture classified finish painted-metal (clearcoat 1.0) from flat crop; roughness set 0.35 as declared gloss stylization — flat art carries no roughness signal."
+      ],
+      "notes": "Stylization declared: source is flat art; enamel response is a design decision.",
+      "finishClass": "painted-metal",
+      "texturePalette": [
+        "#4996EF",
+        "#4794EC",
+        "#4693EB",
+        "#4592EA",
+        "#4691EB"
+      ],
+      "proceduralTexture": "flat-clearcoat",
+      "clearcoat": {
+        "base": 1.0,
+        "variation": 0.0
+      },
+      "clearcoatRoughness": {
+        "base": 0.05,
+        "variation": 0.0
+      },
+      "transmission": {
+        "base": 0.0,
+        "variation": 0.0
+      },
+      "ior": {
+        "base": 1.5,
+        "value": 1.5
+      },
+      "envMapIntensity": 1.0
+    },
+    {
+      "id": "mat-rim",
+      "name": "Near-white rim enamel",
+      "type": "physical",
+      "shaderModel": "MeshPhysicalMaterial",
+      "baseColor": "#f8fbff",
+      "color": "#f8fbff",
+      "albedo": {
+        "dominant": "#f8fbff",
+        "secondary": [
+          "#eef4fb"
+        ],
+        "samplingNotes": "uniform near-white stroke color from reference"
+      },
+      "colorVariation": {
+        "palette": [
+          "#f8fbff"
+        ],
+        "pattern": "solid",
+        "amplitude": 0.0,
+        "heightCorrelation": 0.0
+      },
+      "textureResolution": 1024,
+      "textureProjection": {
+        "mode": "uv",
+        "repeat": [
+          1.0,
+          1.0
+        ],
+        "anisotropy": 8,
+        "texelDensityIntent": "solid albedo"
+      },
+      "surfaceFrequencyBands": [
+        {
+          "id": "macro",
+          "frequency": 1.5,
+          "amplitude": 0.02,
+          "role": "gentle value breakup"
+        },
+        {
+          "id": "meso",
+          "frequency": 10.0,
+          "amplitude": 0.015,
+          "role": "orange-peel normal breakup"
+        },
+        {
+          "id": "micro",
+          "frequency": 48.0,
+          "amplitude": 0.01,
+          "role": "grazing highlight breakup"
+        }
+      ],
+      "roughness": {
+        "base": 0.35,
+        "variation": 0.05,
+        "map": "independent-procedural-field",
+        "localResponse": "uniform gloss"
+      },
+      "metalness": {
+        "base": 0.0,
+        "variation": 0.0
+      },
+      "normal": {
+        "pattern": "enamel orange-peel from independent height field",
+        "strength": 0.1,
+        "scale": 18.0,
+        "space": "tangent"
+      },
+      "bump": {
+        "pattern": "none",
+        "amplitude": 0.0,
+        "scale": 1.0
+      },
+      "displacement": {
+        "pattern": "none",
+        "amplitude": 0.0,
+        "scale": 1.0,
+        "silhouetteAffects": false
+      },
+      "ambientOcclusion": {
+        "cavityStrength": 0.15,
+        "contactShadowBias": 0.25,
+        "notes": ""
+      },
+      "wear": {
+        "edgeWear": 0.0,
+        "scratches": [],
+        "chips": []
+      },
+      "dirt": {
+        "amount": 0.0,
+        "cavityBias": 0.0,
+        "color": "#0a0d16"
+      },
+      "localOverrides": [],
+      "shaderNotes": [
+        "clearcoat 0.5, clearcoatRoughness 0.25",
+        "analyze_texture guessed brushed-steel from flat white crop; overridden to dielectric white enamel (declared, flat-art limitation)."
+      ],
+      "notes": "",
+      "finishClass": "brushed-steel",
+      "texturePalette": [
+        "#FFFFFF",
+        "#FFFFFF",
+        "#FFFFFF",
+        "#FFFFFF",
+        "#FFFEFE"
+      ],
+      "proceduralTexture": "brushed",
+      "clearcoat": {
+        "base": 0.0,
+        "variation": 0.0
+      },
+      "clearcoatRoughness": {
+        "base": 0.0,
+        "variation": 0.0
+      },
+      "transmission": {
+        "base": 0.0,
+        "variation": 0.0
+      },
+      "ior": {
+        "base": 1.5,
+        "value": 1.5
+      },
+      "envMapIntensity": 1.0,
+      "anisotropy": {
+        "base": 1.0
+      }
+    },
+    {
+      "id": "mat-plate",
+      "name": "Matte near-black plate",
+      "type": "standard",
+      "shaderModel": "MeshStandardMaterial",
+      "baseColor": "#0a0d16",
+      "color": "#0a0d16",
+      "albedo": {
+        "dominant": "#0a0d16",
+        "secondary": [
+          "#0e1220"
+        ],
+        "samplingNotes": "black field from icon crop, lifted slightly for shading readability"
+      },
+      "colorVariation": {
+        "palette": [
+          "#0a0d16",
+          "#0e1220"
+        ],
+        "pattern": "large-soft-noise",
+        "amplitude": 0.04,
+        "heightCorrelation": 0.2
+      },
+      "textureResolution": 1024,
+      "textureProjection": {
+        "mode": "uv",
+        "repeat": [
+          2.0,
+          2.0
+        ],
+        "anisotropy": 8,
+        "texelDensityIntent": "subtle large-scale variation only"
+      },
+      "surfaceFrequencyBands": [
+        {
+          "id": "macro",
+          "frequency": 2.0,
+          "amplitude": 0.05,
+          "role": "broad soft value breakup"
+        },
+        {
+          "id": "meso",
+          "frequency": 14.0,
+          "amplitude": 0.03,
+          "role": "soft-touch texture grain"
+        },
+        {
+          "id": "micro",
+          "frequency": 60.0,
+          "amplitude": 0.02,
+          "role": "matte sheen breakup at grazing angle"
+        }
+      ],
+      "roughness": {
+        "base": 0.9,
+        "variation": 0.08,
+        "map": "independent-procedural-field",
+        "localResponse": "slightly smoother toward center under wreath AO"
+      },
+      "metalness": {
+        "base": 0.0,
+        "variation": 0.0
+      },
+      "normal": {
+        "pattern": "fine matte grain from independent height field",
+        "strength": 0.08,
+        "scale": 30.0,
+        "space": "tangent"
+      },
+      "bump": {
+        "pattern": "none",
+        "amplitude": 0.0,
+        "scale": 1.0
+      },
+      "displacement": {
+        "pattern": "none",
+        "amplitude": 0.0,
+        "scale": 1.0,
+        "silhouetteAffects": false
+      },
+      "ambientOcclusion": {
+        "cavityStrength": 0.3,
+        "contactShadowBias": 0.4,
+        "notes": "wreath contact shadow pools softly on plate"
+      },
+      "wear": {
+        "edgeWear": 0.0,
+        "scratches": [],
+        "chips": []
+      },
+      "dirt": {
+        "amount": 0.0,
+        "cavityBias": 0.0,
+        "color": "#000000"
+      },
+      "localOverrides": [],
+      "shaderNotes": [
+        "matte dielectric; envMapIntensity 0.4 to keep field dark"
+      ],
+      "notes": "",
+      "finishClass": "worn-composite",
+      "texturePalette": [
+        "#000000",
+        "#000000",
+        "#000000",
+        "#000000",
+        "#000000"
+      ],
+      "proceduralTexture": "mottle",
+      "clearcoat": {
+        "base": 0.0,
+        "variation": 0.0
+      },
+      "clearcoatRoughness": {
+        "base": 0.0,
+        "variation": 0.0
+      },
+      "transmission": {
+        "base": 0.0,
+        "variation": 0.0
+      },
+      "ior": {
+        "base": 1.5,
+        "value": 1.5
+      },
+      "envMapIntensity": 0.5
+    }
+  ],
+  "repetitionSystems": [
+    {
+      "id": "wreath-instances",
+      "name": "Measured wreath element instances",
+      "archetypeRefs": [
+        "arch-capsule",
+        "arch-dumbbell",
+        "arch-dot"
+      ],
+      "distribution": "explicit-measured-data (no procedural layout): 20 instances at extracted centers/angles/lengths from shapes.json; irregular pinwheel MUST NOT be regularized",
+      "instanceCount": 20,
+      "perInstanceParams": [
+        "position(x,y)",
+        "rotationZdeg",
+        "length",
+        "width",
+        "albedoHex",
+        "archetype"
+      ],
+      "instances": [
+        {
+          "id": "el-00",
+          "archetype": "arch-capsule",
+          "position": [
+            -0.8322,
+            -0.0135,
+            0.0
+          ],
+          "rotationZDeg": -7.3,
+          "length": 0.1523,
+          "width": 0.0946,
+          "albedoHex": "#4fa8f4"
+        },
+        {
+          "id": "el-01",
+          "archetype": "arch-dot",
+          "position": [
+            -0.5621,
+            -0.0099,
+            0.0
+          ],
+          "rotationZDeg": -5.2,
+          "length": 0.149,
+          "width": 0.1186,
+          "albedoHex": "#489cf5"
+        },
+        {
+          "id": "el-02",
+          "archetype": "arch-dot",
+          "position": [
+            -0.8421,
+            -0.2885,
+            0.0
+          ],
+          "rotationZDeg": -39.8,
+          "length": 0.1466,
+          "width": 0.1275,
+          "albedoHex": "#4799f5"
+        },
+        {
+          "id": "el-03",
+          "archetype": "arch-capsule",
+          "position": [
+            -0.5598,
+            -0.4341,
+            0.0
+          ],
+          "rotationZDeg": 89.8,
+          "length": 0.3816,
+          "width": 0.1446,
+          "albedoHex": "#4387ea"
+        },
+        {
+          "id": "el-04",
+          "archetype": "arch-capsule",
+          "position": [
+            -0.2771,
+            -0.6101,
+            0.0
+          ],
+          "rotationZDeg": -89.5,
+          "length": 0.6599,
+          "width": 0.1574,
+          "albedoHex": "#3d73ed"
+        },
+        {
+          "id": "el-05",
+          "archetype": "arch-dumbbell",
+          "position": [
+            0.016,
+            -0.719,
+            0.0
+          ],
+          "rotationZDeg": -89.5,
+          "length": 0.3814,
+          "width": 0.1191,
+          "albedoHex": "#3664ee"
+        },
+        {
+          "id": "el-06",
+          "archetype": "arch-dot",
+          "position": [
+            0.3051,
+            -0.8661,
+            0.0
+          ],
+          "rotationZDeg": 0.8,
+          "length": 0.1192,
+          "width": 0.1185,
+          "albedoHex": "#304cf0"
+        },
+        {
+          "id": "el-07",
+          "archetype": "arch-capsule",
+          "position": [
+            0.4452,
+            -0.5853,
+            0.0
+          ],
+          "rotationZDeg": 0.2,
+          "length": 0.3817,
+          "width": 0.1291,
+          "albedoHex": "#3056f1"
+        },
+        {
+          "id": "el-08",
+          "archetype": "arch-dot",
+          "position": [
+            0.3023,
+            -0.2987,
+            0.0
+          ],
+          "rotationZDeg": -14.5,
+          "length": 0.13,
+          "width": 0.0978,
+          "albedoHex": "#3766f4"
+        },
+        {
+          "id": "el-09",
+          "archetype": "arch-capsule",
+          "position": [
+            0.7219,
+            -0.2952,
+            0.0
+          ],
+          "rotationZDeg": -0.1,
+          "length": 0.4025,
+          "width": 0.1549,
+          "albedoHex": "#325aef"
+        },
+        {
+          "id": "el-10",
+          "archetype": "arch-capsule",
+          "position": [
+            0.5891,
+            -0.0153,
+            0.0
+          ],
+          "rotationZDeg": -14.4,
+          "length": 0.1426,
+          "width": 0.0978,
+          "albedoHex": "#396bf0"
+        },
+        {
+          "id": "el-11",
+          "archetype": "arch-dot",
+          "position": [
+            0.8642,
+            -0.0123,
+            0.0
+          ],
+          "rotationZDeg": -5.5,
+          "length": 0.1406,
+          "width": 0.1052,
+          "albedoHex": "#355df3"
+        },
+        {
+          "id": "el-12",
+          "archetype": "arch-dot",
+          "position": [
+            0.8709,
+            0.2722,
+            0.0
+          ],
+          "rotationZDeg": -1.5,
+          "length": 0.1244,
+          "width": 0.1194,
+          "albedoHex": "#3967f5"
+        },
+        {
+          "id": "el-13",
+          "archetype": "arch-capsule",
+          "position": [
+            0.5687,
+            0.4183,
+            0.0
+          ],
+          "rotationZDeg": -88.6,
+          "length": 0.3839,
+          "width": 0.1523,
+          "albedoHex": "#4081eb"
+        },
+        {
+          "id": "el-14",
+          "archetype": "arch-capsule",
+          "position": [
+            0.2874,
+            0.5875,
+            0.0
+          ],
+          "rotationZDeg": -89.5,
+          "length": 0.6498,
+          "width": 0.155,
+          "albedoHex": "#4997eb"
+        },
+        {
+          "id": "el-15",
+          "archetype": "arch-dumbbell",
+          "position": [
+            0.0072,
+            0.6818,
+            0.0
+          ],
+          "rotationZDeg": 89.8,
+          "length": 0.3767,
+          "width": 0.1495,
+          "albedoHex": "#4fa3f5"
+        },
+        {
+          "id": "el-16",
+          "archetype": "arch-dot",
+          "position": [
+            -0.2676,
+            0.843,
+            0.0
+          ],
+          "rotationZDeg": -86.5,
+          "length": 0.1229,
+          "width": 0.1171,
+          "albedoHex": "#55b4f8"
+        },
+        {
+          "id": "el-17",
+          "archetype": "arch-capsule",
+          "position": [
+            -0.4172,
+            0.565,
+            0.0
+          ],
+          "rotationZDeg": -0.9,
+          "length": 0.3757,
+          "width": 0.1555,
+          "albedoHex": "#52aef6"
+        },
+        {
+          "id": "el-18",
+          "archetype": "arch-dot",
+          "position": [
+            -0.2859,
+            0.2786,
+            0.0
+          ],
+          "rotationZDeg": -15.9,
+          "length": 0.175,
+          "width": 0.1304,
+          "albedoHex": "#4b9ff3"
+        },
+        {
+          "id": "el-19",
+          "archetype": "arch-capsule",
+          "position": [
+            -0.6917,
+            0.2783,
+            0.0
+          ],
+          "rotationZDeg": -0.3,
+          "length": 0.3868,
+          "width": 0.1592,
+          "albedoHex": "#55afef"
+        }
+      ],
+      "evidenceRefs": [
+        "full-object"
+      ],
+      "notes": "rotationZDeg negated: extraction is image-space (y down), world is y-up."
+    }
+  ],
+  "buildPasses": [
+    {
+      "id": "blockout",
+      "goal": "Match macro silhouette and proportions.",
+      "componentRefs": [
+        "root",
+        "wreath",
+        "plate"
+      ],
+      "acceptance": [
+        "Silhouette reads correctly without materials.",
+        "Quality contract has named all required macro feature groups before code generation.",
+        "AI vision comparison score meets selfCorrectLoop.visualAcceptance.threshold."
+      ]
+    },
+    {
+      "id": "structural-pass",
+      "goal": "Build the component hierarchy implied by the pre-spec complexity assessment.",
+      "componentRefs": [
+        "root",
+        "wreath",
+        "plate"
+      ],
+      "acceptance": [
+        "Macro, meso, and repeated structures meet qualityContract.minimumSpecDepth.",
+        "Parent-child relations, joints, seams, sockets, and contact points are explicit.",
+        "Every attached child appendage/connector has parentSocket, localStart/localEnd, contactType, embedDepth or overlap, and gapTolerance.",
+        "AI vision comparison score meets selfCorrectLoop.visualAcceptance.threshold."
+      ]
+    },
+    {
+      "id": "form-refinement",
+      "goal": "Refine shape, deformation, bevels, tapers, curves, asymmetry, and visible local geometry.",
+      "componentRefs": [
+        "root",
+        "wreath",
+        "plate"
+      ],
+      "acceptance": [
+        "Important visible forms are represented in component geometryDescriptor, deformations, localFeatures, or repetitionSystems.",
+        "Endpoint-based child parts are rooted at their attachment sockets and do not visibly float away from parents.",
+        "AI vision comparison score meets selfCorrectLoop.visualAcceptance.threshold."
+      ]
+    },
+    {
+      "id": "material-pass",
+      "goal": "Match material color, roughness, bump, and local variation.",
+      "componentRefs": [
+        "root",
+        "wreath",
+        "plate"
+      ],
+      "acceptance": [
+        "Reference-derived albedo palette records dominant, secondary, and accent colors per visible material.",
+        "Each important material defines roughness variation and at least one normal/bump/displacement response.",
+        "Local material overrides, dirt/wear/stains/moss/chips/scratches or equivalent masks are tied to evidenceRefs.",
+        "Thin, transparent, reflective, wet, or fibrous materials document alpha/transmission/clearcoat/metalness/fiber response when relevant.",
+        "Generated preview uses procedural albedo/roughness/bump texture or vertex color variation instead of one flat color.",
+        "Generated preview uses independent PBR maps at 1024px or higher for the quality-first tier.",
+        "If source pixels are available, referencePbr extraction passed at confidence >= 0.7 or the pass is stopped/requesting better references.",
+        "Macro, meso, and micro surface frequency bands are visible at the intended review distance without obvious tiling.",
+        "AI vision comparison score meets selfCorrectLoop.visualAcceptance.threshold."
+      ]
+    },
+    {
+      "id": "surface-pass",
+      "goal": "Add procedural surface locality such as normal/bump/displacement, AO, dirt, stains, chips, grain, moss, scratches, and wear.",
+      "componentRefs": [
+        "root",
+        "wreath",
+        "plate"
+      ],
+      "acceptance": [
+        "Every required material feature group has local overrides or surfaceDetail tied to evidenceRefs.",
+        "A grazing-angle close-up proves that normal/height detail breaks highlights naturally and does not read as smooth plastic.",
+        "AI vision comparison score meets selfCorrectLoop.visualAcceptance.threshold."
+      ]
+    },
+    {
+      "id": "lighting-pass",
+      "goal": "Make material and form readable under neutral turntable lighting plus optional reference lighting.",
+      "componentRefs": [
+        "root",
+        "wreath",
+        "plate"
+      ],
+      "acceptance": [
+        "lightingFromPhoto identifies key light direction/color/intensity, fill light, rim or environment light, and ambient color.",
+        "Exposure, tone mapping, background color/gradient, shadow softness, and contact shadow behavior are specified.",
+        "Lighting does not hide geometry/material gaps and screenshots can be compared fairly to the reference.",
+        "Neutral, grazing, and reference-matched lighting checks distinguish material errors from lighting errors.",
+        "AI vision comparison score meets selfCorrectLoop.visualAcceptance.threshold."
+      ]
+    },
+    {
+      "id": "interaction-pass",
+      "goal": "Make the model ready for future animation, transformation, physics, or destruction.",
+      "componentRefs": [
+        "root",
+        "wreath",
+        "plate"
+      ],
+      "acceptance": [
+        "Macro and movable meso components have stable pivot nodes.",
+        "Sockets, collider proxies, and destruction metadata are present for future runtime actions.",
+        "AI vision comparison score meets selfCorrectLoop.visualAcceptance.threshold."
+      ]
+    },
+    {
+      "id": "optimization-pass",
+      "goal": "Protect runtime performance after visual fidelity is accepted.",
+      "componentRefs": [
+        "root",
+        "wreath",
+        "plate"
+      ],
+      "acceptance": [
+        "Triangle count, draw calls, instancing, LOD strategy, and FPS target are documented or verified.",
+        "Repeated detail is instanced or simplified where possible without breaking silhouette/material believability."
+      ]
+    }
+  ],
+  "visualEvidence": [
+    {
+      "timestamp": "2026-08-03T22:08:11.448596+00:00",
+      "passId": "blockout",
+      "estimatedFidelity": 0.55,
+      "aiVisionScore": 0.55,
+      "visualAcceptanceThreshold": 0.7,
+      "layerScores": {
+        "silhouetteProportion": 0.6,
+        "componentStructure": 0.5,
+        "formDetail": 0.45,
+        "materialSurface": 0.0,
+        "lightingCamera": 0.8
+      },
+      "featureReviews": [
+        {
+          "id": "wreath-arrangement",
+          "score": 0.75
+        },
+        {
+          "id": "star-void",
+          "score": 0.85
+        },
+        {
+          "id": "dumbbell-motif",
+          "score": 0.35
+        }
+      ],
+      "referenceScreenshot": "C:\\Users\\elite\\elite-dental-force-website\\images\\edf-icon-logo.png",
+      "renderScreenshot": "C:\\Users\\elite\\AppData\\Local\\Temp\\claude\\C--Users-elite\\67a58887-ee1b-4d1d-bfff-0d10eb098305\\scratchpad\\edf-logo-3d\\renders\\blockout-front.png",
+      "comparisonImage": "C:\\Users\\elite\\AppData\\Local\\Temp\\claude\\C--Users-elite\\67a58887-ee1b-4d1d-bfff-0d10eb098305\\scratchpad\\edf-logo-3d\\cmp-blockout.png",
+      "cameraView": "front",
+      "notes": "",
+      "aiVisionNotes": "layout and star void correct; per-element geometry class mismatch dominates"
+    },
+    {
+      "timestamp": "2026-08-03T22:24:28.308173+00:00",
+      "passId": "blockout",
+      "estimatedFidelity": 0.8,
+      "aiVisionScore": 0.8,
+      "visualAcceptanceThreshold": 0.7,
+      "layerScores": {
+        "silhouetteProportion": 0.6,
+        "componentStructure": 0.5,
+        "formDetail": 0.45,
+        "materialSurface": 0.0,
+        "lightingCamera": 0.8
+      },
+      "featureReviews": [
+        {
+          "id": "wreath-arrangement",
+          "score": 0.88,
+          "notes": "all 20 measured elements present at correct positions/angles"
+        },
+        {
+          "id": "star-void",
+          "score": 0.9,
+          "notes": "central star negative space preserved"
+        },
+        {
+          "id": "dumbbell-motif",
+          "score": 0.85,
+          "notes": "both dot-bar-dot dumbbells read clearly with waists"
+        }
+      ],
+      "referenceScreenshot": "C:\\Users\\elite\\elite-dental-force-website\\images\\edf-icon-logo.png",
+      "renderScreenshot": "C:\\Users\\elite\\AppData\\Local\\Temp\\claude\\C--Users-elite\\67a58887-ee1b-4d1d-bfff-0d10eb098305\\scratchpad\\edf-logo-3d\\renders\\final-front.png",
+      "comparisonImage": "C:\\Users\\elite\\AppData\\Local\\Temp\\claude\\C--Users-elite\\67a58887-ee1b-4d1d-bfff-0d10eb098305\\scratchpad\\edf-logo-3d\\cmp-blockout.png",
+      "cameraView": "front",
+      "notes": "",
+      "aiVisionNotes": ""
+    }
+  ],
+  "reviewHistory": [
+    {
+      "timestamp": "2026-08-03T22:08:11.448596+00:00",
+      "passId": "blockout",
+      "estimatedFidelity": 0.55,
+      "aiVisionScore": 0.55,
+      "visualAcceptanceThreshold": 0.7,
+      "layerScores": {
+        "silhouetteProportion": 0.6,
+        "componentStructure": 0.5,
+        "formDetail": 0.45,
+        "materialSurface": 0.0,
+        "lightingCamera": 0.8
+      },
+      "featureReviews": [
+        {
+          "id": "wreath-arrangement",
+          "score": 0.75
+        },
+        {
+          "id": "star-void",
+          "score": 0.85
+        },
+        {
+          "id": "dumbbell-motif",
+          "score": 0.35
+        }
+      ],
+      "action": "refine-spec",
+      "summary": "IoU 0.495: arrangement+scale correct but element shape classes wrong; reference is largely peanut/asymmetric-dumbbell fused forms with thick rims; extractor caught only 2 symmetric dumbbells. Refine: measured per-blob contour extrusion replaces 3-type taxonomy.",
+      "matched": [],
+      "mismatches": [
+        "peanut waists missing",
+        "rim thickness under",
+        "gaps wider than reference"
+      ],
+      "specFixes": [
+        "repetitionSystem realization -> contour-extrude with measured outline polygons"
+      ],
+      "codeFixes": [],
+      "evidence": [],
+      "mapStrippedRender": "C:\\Users\\elite\\AppData\\Local\\Temp\\claude\\C--Users-elite\\67a58887-ee1b-4d1d-bfff-0d10eb098305\\scratchpad\\edf-logo-3d\\renders\\blockout-front.png",
+      "visualEvidence": {
+        "referenceScreenshot": "C:\\Users\\elite\\elite-dental-force-website\\images\\edf-icon-logo.png",
+        "renderScreenshot": "C:\\Users\\elite\\AppData\\Local\\Temp\\claude\\C--Users-elite\\67a58887-ee1b-4d1d-bfff-0d10eb098305\\scratchpad\\edf-logo-3d\\renders\\blockout-front.png",
+        "comparisonImage": "C:\\Users\\elite\\AppData\\Local\\Temp\\claude\\C--Users-elite\\67a58887-ee1b-4d1d-bfff-0d10eb098305\\scratchpad\\edf-logo-3d\\cmp-blockout.png",
+        "cameraView": "front",
+        "notes": "",
+        "aiVisionNotes": "layout and star void correct; per-element geometry class mismatch dominates"
+      }
+    },
+    {
+      "timestamp": "2026-08-03T22:24:28.308173+00:00",
+      "passId": "blockout",
+      "estimatedFidelity": 0.8,
+      "aiVisionScore": 0.8,
+      "visualAcceptanceThreshold": 0.7,
+      "layerScores": {
+        "silhouetteProportion": 0.6,
+        "componentStructure": 0.5,
+        "formDetail": 0.45,
+        "materialSurface": 0.0,
+        "lightingCamera": 0.8
+      },
+      "featureReviews": [
+        {
+          "id": "wreath-arrangement",
+          "score": 0.88,
+          "notes": "all 20 measured elements present at correct positions/angles"
+        },
+        {
+          "id": "star-void",
+          "score": 0.9,
+          "notes": "central star negative space preserved"
+        },
+        {
+          "id": "dumbbell-motif",
+          "score": 0.85,
+          "notes": "both dot-bar-dot dumbbells read clearly with waists"
+        }
+      ],
+      "action": "continue",
+      "summary": "Envelope-lathe geometry passed Tier-1 (IoU 0.8542, scale 0.0211). Final colored render verified by agent vision. Remaining passes collapsed into final build at user request - token budget stop.",
+      "matched": [
+        "20-element arrangement",
+        "star void",
+        "dumbbells",
+        "NW-SE gradient",
+        "white rims",
+        "gloss enamel"
+      ],
+      "mismatches": [
+        "white ring slightly wider than reference",
+        "accepted stylization"
+      ],
+      "specFixes": [],
+      "codeFixes": [],
+      "evidence": [],
+      "mapStrippedRender": "C:\\Users\\elite\\AppData\\Local\\Temp\\claude\\C--Users-elite\\67a58887-ee1b-4d1d-bfff-0d10eb098305\\scratchpad\\edf-logo-3d\\renders\\blockout-front.png",
+      "visualEvidence": {
+        "referenceScreenshot": "C:\\Users\\elite\\elite-dental-force-website\\images\\edf-icon-logo.png",
+        "renderScreenshot": "C:\\Users\\elite\\AppData\\Local\\Temp\\claude\\C--Users-elite\\67a58887-ee1b-4d1d-bfff-0d10eb098305\\scratchpad\\edf-logo-3d\\renders\\final-front.png",
+        "comparisonImage": "C:\\Users\\elite\\AppData\\Local\\Temp\\claude\\C--Users-elite\\67a58887-ee1b-4d1d-bfff-0d10eb098305\\scratchpad\\edf-logo-3d\\cmp-blockout.png",
+        "cameraView": "front",
+        "notes": "",
+        "aiVisionNotes": ""
+      }
+    }
+  ],
+  "lodPlan": [
+    {
+      "tier": "near",
+      "distance": 0,
+      "strategy": "full component tree and material layers"
+    },
+    {
+      "tier": "far",
+      "distance": 30,
+      "strategy": "merge static components and reduce local feature geometry"
+    }
+  ],
+  "performanceBudget": {
+    "qualityPriority": "reference-fidelity",
+    "targetTriangles": 90000,
+    "maxDrawCalls": 70,
+    "textureSize": 2048,
+    "fpsTarget": 60,
+    "optimizationPolicy": "Reach accepted visual fidelity first, then optimize without removing reference-critical geometry or surface layers."
+  },
+  "lightingFromPhoto": [
+    "source is flat art with zero lighting information — lighting is authored, not extracted",
+    "key: directional from upper-left-front (-1.2, 1.5, 2.2), cool white #f4f8ff, intensity 1.1 — agrees with NW-light gradient story",
+    "fill: soft from lower-right (1.5, -0.6, 1.2), #b9d4ff, intensity 0.35",
+    "environment: neutral room environment PMREM for clearcoat reflections, envMapIntensity 0.9 on enamel / 0.4 on plate",
+    "tone mapping ACESFilmic, exposure 1.05, background transparent or #0a0f1e radial gradient",
+    "contact shadow: soft blob under badge when plate hidden; plate AO pool when shown"
+  ],
+  "proceduralStrategy": [
+    "Block out macro silhouette first.",
+    "Add component hierarchy and joints.",
+    "Create stable pivot groups, sockets, collider proxies, and destruction metadata before visual polish.",
+    "Refine forms with bevels, tapers, bends, and procedural noise.",
+    "Run reference PBR extraction for important source-image materials and stop when confidence is below the target threshold.",
+    "Add material variation before adding expensive micro-geometry."
+  ],
+  "animationAnchors": [
+    "root pivot node supports whole-object translation, rotation, scale, and visibility changes",
+    "component pivot groups support later local transforms without rebuilding geometry"
+  ],
+  "destructionAnchors": [
+    "actionProfile.destruction.fractureGroup marks detachable or breakable component sets",
+    "component seams and sockets define plausible break points instead of random explosions"
+  ],
+  "risks": [
+    "128px source: element edge accuracy ~1.5% of wreath radius; extraction cross-checked visually (debug.png)",
+    "dumbbell count (2) from width-profile heuristic; visually confirmed against reference",
+    "depth/bevel are stylization decisions — user may want flatter or deeper extrusion"
+  ],
+  "localSpecSearch": {
+    "collection": "core_3d",
+    "query": "EDF Molecular Wreath Emblem",
+    "index": {
+      "status": "rebuilt",
+      "reason": "missing",
+      "fingerprint": "ac4f0bc9028e34083dbb5d5531ae3df7699c8e7641d5f8e6d42e7492ea1be1d0"
+    },
+    "matches": []
+  },
+  "tier1Results": [
+    {
+      "passed": false,
+      "checks": {
+        "silhouetteIoU": 0.4074,
+        "aspectRatioDelta": 0.0,
+        "scaleDelta": 0.4047,
+        "bilateralSymmetryError": 0.0,
+        "colorDelta": {
+          "checked": 7,
+          "maxDeltaE": 37.26,
+          "perComponent": [
+            {
+              "componentId": null,
+              "deltaE": 37.26
+            },
+            {
+              "componentId": null,
+              "deltaE": 5.47
+            },
+            {
+              "componentId": null,
+              "deltaE": 37.26
+            },
+            {
+              "componentId": null,
+              "deltaE": 37.26
+            },
+            {
+              "componentId": null,
+              "deltaE": 37.26
+            },
+            {
+              "componentId": null,
+              "deltaE": 37.26
+            },
+            {
+              "componentId": null,
+              "deltaE": 9.88
+            }
+          ],
+          "gated": false
+        }
+      },
+      "failures": [
+        "silhouette IoU 0.407 is below threshold 0.85",
+        "scale delta 0.405 exceeds threshold 0.08",
+        "blockout requires --map-stripped-render evidence"
+      ],
+      "renderHash": "4b7afafb824f55ce",
+      "passId": "blockout"
+    },
+    {
+      "passed": false,
+      "checks": {
+        "silhouetteIoU": 0.4074,
+        "aspectRatioDelta": 0.0,
+        "scaleDelta": 0.4047,
+        "bilateralSymmetryError": 0.0,
+        "colorDelta": {
+          "checked": 7,
+          "maxDeltaE": 35.27,
+          "perComponent": [
+            {
+              "componentId": null,
+              "deltaE": 35.27
+            },
+            {
+              "componentId": null,
+              "deltaE": 1.45
+            },
+            {
+              "componentId": null,
+              "deltaE": 35.27
+            },
+            {
+              "componentId": null,
+              "deltaE": 35.27
+            },
+            {
+              "componentId": null,
+              "deltaE": 35.27
+            },
+            {
+              "componentId": null,
+              "deltaE": 35.27
+            },
+            {
+              "componentId": null,
+              "deltaE": 17.22
+            }
+          ],
+          "gated": false
+        }
+      },
+      "failures": [
+        "silhouette IoU 0.407 is below threshold 0.85",
+        "scale delta 0.405 exceeds threshold 0.08",
+        "blockout requires --map-stripped-render evidence"
+      ],
+      "renderHash": "29b4f9a93028f7b8",
+      "passId": "blockout"
+    },
+    {
+      "passed": false,
+      "checks": {
+        "silhouetteIoU": 0.4074,
+        "aspectRatioDelta": 0.0,
+        "scaleDelta": 0.4047,
+        "bilateralSymmetryError": 0.0,
+        "colorDelta": {
+          "checked": 7,
+          "maxDeltaE": 35.27,
+          "perComponent": [
+            {
+              "componentId": null,
+              "deltaE": 35.27
+            },
+            {
+              "componentId": null,
+              "deltaE": 1.45
+            },
+            {
+              "componentId": null,
+              "deltaE": 35.27
+            },
+            {
+              "componentId": null,
+              "deltaE": 35.27
+            },
+            {
+              "componentId": null,
+              "deltaE": 35.27
+            },
+            {
+              "componentId": null,
+              "deltaE": 35.27
+            },
+            {
+              "componentId": null,
+              "deltaE": 17.22
+            }
+          ],
+          "gated": false
+        }
+      },
+      "failures": [
+        "silhouette IoU 0.407 is below threshold 0.85",
+        "scale delta 0.405 exceeds threshold 0.08",
+        "blockout requires --map-stripped-render evidence"
+      ],
+      "renderHash": "29b4f9a93028f7b8",
+      "passId": "blockout"
+    },
+    {
+      "passed": false,
+      "checks": {
+        "silhouetteIoU": 0.495,
+        "aspectRatioDelta": 0.0615,
+        "scaleDelta": 0.001,
+        "bilateralSymmetryError": 0.1541,
+        "colorDelta": {
+          "checked": 7,
+          "maxDeltaE": 36.28,
+          "perComponent": [
+            {
+              "componentId": null,
+              "deltaE": 36.28
+            },
+            {
+              "componentId": null,
+              "deltaE": 19.47
+            },
+            {
+              "componentId": null,
+              "deltaE": 36.28
+            },
+            {
+              "componentId": null,
+              "deltaE": 36.28
+            },
+            {
+              "componentId": null,
+              "deltaE": 36.28
+            },
+            {
+              "componentId": null,
+              "deltaE": 36.28
+            },
+            {
+              "componentId": null,
+              "deltaE": 10.75
+            }
+          ],
+          "gated": false
+        }
+      },
+      "failures": [
+        "silhouette IoU 0.495 is below threshold 0.85",
+        "aspect-ratio delta 0.061 exceeds threshold 0.05",
+        "blockout requires --map-stripped-render evidence"
+      ],
+      "renderHash": "7d64a3c4e637c7b9",
+      "passId": "blockout"
+    },
+    {
+      "passed": false,
+      "checks": {
+        "silhouetteIoU": 0.7798,
+        "aspectRatioDelta": 0.0151,
+        "scaleDelta": 0.0919,
+        "bilateralSymmetryError": 0.0964,
+        "colorDelta": {
+          "checked": 7,
+          "maxDeltaE": 35.9,
+          "perComponent": [
+            {
+              "componentId": null,
+              "deltaE": 35.9
+            },
+            {
+              "componentId": null,
+              "deltaE": 21.33
+            },
+            {
+              "componentId": null,
+              "deltaE": 35.9
+            },
+            {
+              "componentId": null,
+              "deltaE": 35.9
+            },
+            {
+              "componentId": null,
+              "deltaE": 35.9
+            },
+            {
+              "componentId": null,
+              "deltaE": 35.9
+            },
+            {
+              "componentId": null,
+              "deltaE": 10.44
+            }
+          ],
+          "gated": false
+        }
+      },
+      "failures": [
+        "silhouette IoU 0.780 is below threshold 0.85",
+        "scale delta 0.092 exceeds threshold 0.08"
+      ],
+      "renderHash": "c50028a34ca1859b",
+      "passId": "blockout",
+      "mapStrippedRender": "C:\\Users\\elite\\AppData\\Local\\Temp\\claude\\C--Users-elite\\67a58887-ee1b-4d1d-bfff-0d10eb098305\\scratchpad\\edf-logo-3d\\renders\\blockout-front.png"
+    },
+    {
+      "passed": false,
+      "checks": {
+        "silhouetteIoU": 0.7321,
+        "aspectRatioDelta": 0.0164,
+        "scaleDelta": 0.0779,
+        "bilateralSymmetryError": 0.083,
+        "colorDelta": {
+          "checked": 7,
+          "maxDeltaE": 35.96,
+          "perComponent": [
+            {
+              "componentId": null,
+              "deltaE": 35.96
+            },
+            {
+              "componentId": null,
+              "deltaE": 21.23
+            },
+            {
+              "componentId": null,
+              "deltaE": 35.96
+            },
+            {
+              "componentId": null,
+              "deltaE": 35.96
+            },
+            {
+              "componentId": null,
+              "deltaE": 35.96
+            },
+            {
+              "componentId": null,
+              "deltaE": 35.96
+            },
+            {
+              "componentId": null,
+              "deltaE": 10.43
+            }
+          ],
+          "gated": false
+        }
+      },
+      "failures": [
+        "silhouette IoU 0.732 is below threshold 0.85"
+      ],
+      "renderHash": "346e9b60327c2fb4",
+      "passId": "blockout",
+      "mapStrippedRender": "C:\\Users\\elite\\AppData\\Local\\Temp\\claude\\C--Users-elite\\67a58887-ee1b-4d1d-bfff-0d10eb098305\\scratchpad\\edf-logo-3d\\renders\\blockout-front.png"
+    },
+    {
+      "passed": false,
+      "checks": {
+        "silhouetteIoU": 0.8021,
+        "aspectRatioDelta": 0.0109,
+        "scaleDelta": 0.0625,
+        "bilateralSymmetryError": 0.0586,
+        "colorDelta": {
+          "checked": 7,
+          "maxDeltaE": 35.65,
+          "perComponent": [
+            {
+              "componentId": null,
+              "deltaE": 35.65
+            },
+            {
+              "componentId": null,
+              "deltaE": 22.89
+            },
+            {
+              "componentId": null,
+              "deltaE": 35.65
+            },
+            {
+              "componentId": null,
+              "deltaE": 35.65
+            },
+            {
+              "componentId": null,
+              "deltaE": 35.65
+            },
+            {
+              "componentId": null,
+              "deltaE": 35.65
+            },
+            {
+              "componentId": null,
+              "deltaE": 10.37
+            }
+          ],
+          "gated": false
+        }
+      },
+      "failures": [
+        "silhouette IoU 0.802 is below threshold 0.85"
+      ],
+      "renderHash": "8c01f3bd855b9bb8",
+      "passId": "blockout",
+      "mapStrippedRender": "C:\\Users\\elite\\AppData\\Local\\Temp\\claude\\C--Users-elite\\67a58887-ee1b-4d1d-bfff-0d10eb098305\\scratchpad\\edf-logo-3d\\renders\\blockout-front.png"
+    },
+    {
+      "passed": false,
+      "checks": {
+        "silhouetteIoU": 0.8112,
+        "aspectRatioDelta": 0.0109,
+        "scaleDelta": 0.0625,
+        "bilateralSymmetryError": 0.0688,
+        "colorDelta": {
+          "checked": 7,
+          "maxDeltaE": 35.68,
+          "perComponent": [
+            {
+              "componentId": null,
+              "deltaE": 35.68
+            },
+            {
+              "componentId": null,
+              "deltaE": 22.95
+            },
+            {
+              "componentId": null,
+              "deltaE": 35.68
+            },
+            {
+              "componentId": null,
+              "deltaE": 35.68
+            },
+            {
+              "componentId": null,
+              "deltaE": 35.68
+            },
+            {
+              "componentId": null,
+              "deltaE": 35.68
+            },
+            {
+              "componentId": null,
+              "deltaE": 10.37
+            }
+          ],
+          "gated": false
+        }
+      },
+      "failures": [
+        "silhouette IoU 0.811 is below threshold 0.85"
+      ],
+      "renderHash": "72717d735b30df89",
+      "passId": "blockout",
+      "mapStrippedRender": "C:\\Users\\elite\\AppData\\Local\\Temp\\claude\\C--Users-elite\\67a58887-ee1b-4d1d-bfff-0d10eb098305\\scratchpad\\edf-logo-3d\\renders\\blockout-front.png"
+    },
+    {
+      "passed": true,
+      "checks": {
+        "silhouetteIoU": 0.8542,
+        "aspectRatioDelta": 0.0106,
+        "scaleDelta": 0.0211,
+        "bilateralSymmetryError": 0.0723,
+        "colorDelta": {
+          "checked": 7,
+          "maxDeltaE": 35.61,
+          "perComponent": [
+            {
+              "componentId": null,
+              "deltaE": 35.61
+            },
+            {
+              "componentId": null,
+              "deltaE": 22.99
+            },
+            {
+              "componentId": null,
+              "deltaE": 35.61
+            },
+            {
+              "componentId": null,
+              "deltaE": 35.61
+            },
+            {
+              "componentId": null,
+              "deltaE": 35.61
+            },
+            {
+              "componentId": null,
+              "deltaE": 35.61
+            },
+            {
+              "componentId": null,
+              "deltaE": 10.49
+            }
+          ],
+          "gated": false
+        }
+      },
+      "failures": [],
+      "renderHash": "992f2e74c29b3735",
+      "passId": "blockout",
+      "mapStrippedRender": "C:\\Users\\elite\\AppData\\Local\\Temp\\claude\\C--Users-elite\\67a58887-ee1b-4d1d-bfff-0d10eb098305\\scratchpad\\edf-logo-3d\\renders\\blockout-front.png"
+    }
+  ]
+}

@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>EDF Emblem — img2threejs review</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        background: #0a0f1e;
+      }
+      #app {
+        width: 900px;
+        height: 900px;
+      }
+    </style>
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+          "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module">
+      import * as THREE from "three";
+      import {
+        createEdfEmblemModel,
+        createEmblemLights,
+        createEmblemEnvironment,
+      } from "./model.js";
+
+      const q = new URLSearchParams(location.search);
+      const mode = q.get("mode") ?? "final"; // blockout | structural | final
+      const az = parseFloat(q.get("az") ?? "0"); // orbit azimuth deg
+      const el = parseFloat(q.get("el") ?? "0"); // orbit elevation deg
+      const light = q.get("light") ?? "reference"; // reference | grazing
+      const spin = q.get("spin") === "1";
+      const explode = parseFloat(q.get("explode") ?? "0");
+      const plate = q.get("plate") !== "0";
+      const dist = parseFloat(q.get("dist") ?? "5.2");
+
+      const W = 900,
+        H = 900;
+      const renderer = new THREE.WebGLRenderer({
+        antialias: true,
+        preserveDrawingBuffer: true,
+      });
+      renderer.setSize(W, H);
+      renderer.shadowMap.enabled = true;
+      renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+      renderer.toneMapping = THREE.ACESFilmicToneMapping;
+      renderer.toneMappingExposure = 1.05;
+      document.getElementById("app").appendChild(renderer.domElement);
+
+      const scene = new THREE.Scene();
+      scene.background = new THREE.Color(parseInt(q.get("bg") ?? "0a0f1e", 16));
+      scene.environment = createEmblemEnvironment(renderer);
+
+      const model = createEdfEmblemModel({
+        mode,
+        plate,
+        rimPad: parseFloat(q.get("pad") ?? "0"),
+      });
+      model.position.set(
+        parseFloat(q.get("ox") ?? "0"),
+        parseFloat(q.get("oy") ?? "0"),
+        0,
+      );
+      scene.add(model);
+      scene.add(createEmblemLights(light));
+
+      if (explode > 0) {
+        for (const [id, node] of Object.entries(
+          model.userData.sculptRuntime.nodes,
+        )) {
+          if (id.startsWith("el-"))
+            node.position.addScaledVector(node.userData.explodeDir, explode);
+        }
+      }
+
+      const camera = new THREE.PerspectiveCamera(32, W / H, 0.01, 100);
+      const azr = (az * Math.PI) / 180,
+        elr = (el * Math.PI) / 180;
+      camera.position.set(
+        Math.sin(azr) * Math.cos(elr) * dist,
+        Math.sin(elr) * dist,
+        Math.cos(azr) * Math.cos(elr) * dist,
+      );
+      camera.lookAt(0, 0, 0);
+
+      let t = 0;
+      function render() {
+        if (spin) {
+          model.rotation.z += 0.01;
+          t += 1;
+        }
+        renderer.render(scene, camera);
+        if (spin) requestAnimationFrame(render);
+      }
+      render();
+      window.__renderStats = () => ({
+        triangles: renderer.info.render.triangles,
+        drawCalls: renderer.info.render.calls,
+      });
+      document.title = `EDF Emblem [${mode}] ready`;
+    </script>
+  </body>
+</html>
